@@ -1,4 +1,5 @@
 songsId = document.getElementById("songsId");
+let i = 0;
 const quizArray = [
   {
     name: "bittersweetsymphony",
@@ -82,23 +83,61 @@ const quizArray = [
   },
 ];
 const questionContainer = document.getElementById("questionContainer");
+
+const question = document.createElement("h3");
+question.textContent = "What Band play this song?";
+questionContainer.appendChild(question);
 const buttonQuiz1 = document.createElement("button");
 const buttonQuiz2 = document.createElement("button");
 const buttonQuiz3 = document.createElement("button");
-buttonQuiz1.textContent = Object.values(quizArray[0])[3];
-buttonQuiz1.textContent = Object.values(quizArray[0])[4];
-buttonQuiz1.textContent = Object.values(quizArray[0])[5];
-document.body.appendChild(buttonQuiz1);
-document.body.appendChild(buttonQuiz2);
-document.body.appendChild(buttonQuiz3);
 
-let i = 0;
+buttonQuiz1.textContent = Object.values(quizArray[i])[3];
+buttonQuiz2.textContent = Object.values(quizArray[i])[4];
+buttonQuiz3.textContent = Object.values(quizArray[i])[5];
+questionContainer.appendChild(buttonQuiz1);
+questionContainer.appendChild(buttonQuiz2);
+questionContainer.appendChild(buttonQuiz3);
 
-songsId.src = quizArray[0].src;
+buttonQuiz1.addEventListener("click", function () {
+  checkAnswer(3);
+});
+buttonQuiz2.addEventListener("click", function () {
+  checkAnswer(4);
+});
+buttonQuiz3.addEventListener("click", function () {
+  checkAnswer(5);
+});
+
+function checkAnswer(ee) {
+  if (Object.keys(quizArray[i])[ee] === "accepted") {
+    i++;
+    songsId.pause();
+    songsId.currentTime = 0;
+    songsId.src = quizArray[i].src;
+    buttonQuiz1.textContent = Object.values(quizArray[i])[3];
+    buttonQuiz2.textContent = Object.values(quizArray[i])[4];
+    buttonQuiz3.textContent = Object.values(quizArray[i])[5];
+    songsId.load();
+    songsId.play();
+    return true;
+  } else {
+    i++;
+    songsId.pause();
+    songsId.currentTime = 0;
+    songsId.src = quizArray[i].src;
+    buttonQuiz1.textContent = Object.values(quizArray[i])[3];
+    buttonQuiz2.textContent = Object.values(quizArray[i])[4];
+    buttonQuiz3.textContent = Object.values(quizArray[i])[5];
+    songsId.load();
+    songsId.play();
+    return false;
+  }
+}
+songsId.src = quizArray[i].src;
 songsId.load();
 songsId.play();
 
 setTimeout(() => {
   songsId.pause();
   songsId.currentTime = 0;
-}, 20000);
+}, 30000);
