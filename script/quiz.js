@@ -1,4 +1,4 @@
-songsId = document.getElementById("songsId");
+const songsId = document.getElementById("songsId");
 let i = 0;
 const quizArray = [
   {
@@ -75,7 +75,7 @@ const quizArray = [
   },
   {
     name: "sudinoi",
-    src: "../assets/audio/sudinoi-pupo.mp3",
+    src: "../assets/audio/Su Di Noi-Pupo.mp3",
     question: `What Band play this song?`,
     dontepted: "ACDC",
     accepted: "PUPO",
@@ -94,6 +94,9 @@ const buttonQuiz3 = document.createElement("button");
 buttonQuiz1.textContent = Object.values(quizArray[i])[3];
 buttonQuiz2.textContent = Object.values(quizArray[i])[4];
 buttonQuiz3.textContent = Object.values(quizArray[i])[5];
+buttonQuiz1.classList.add("quizButton");
+buttonQuiz2.classList.add("quizButton");
+buttonQuiz3.classList.add("quizButton");
 questionContainer.appendChild(buttonQuiz1);
 questionContainer.appendChild(buttonQuiz2);
 questionContainer.appendChild(buttonQuiz3);
@@ -116,7 +119,6 @@ let interval = setInterval(() => {
     i++;
     songsId.pause();
     songsId.currentTime = 0;
-
     songsId.src = quizArray[i].src;
     buttonQuiz1.textContent = Object.values(quizArray[i])[3];
     buttonQuiz2.textContent = Object.values(quizArray[i])[4];
@@ -127,10 +129,10 @@ let interval = setInterval(() => {
 }, 1000);
 function checkAnswer(ee) {
   timer = 30;
+  i++;
   songsId.pause();
   songsId.currentTime = 0;
   songsId.src = quizArray[i].src;
-  i++;
   buttonQuiz1.textContent = Object.values(quizArray[i])[3];
   buttonQuiz2.textContent = Object.values(quizArray[i])[4];
   buttonQuiz3.textContent = Object.values(quizArray[i])[5];
