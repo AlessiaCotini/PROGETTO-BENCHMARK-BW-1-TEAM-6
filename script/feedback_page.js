@@ -30,15 +30,33 @@ const unselectStars = (n) => {
 
 // click che applica la funnzione e salva il voto
 
+let feedbackValueResult = 0
+
 const feedbackValue = (n) => {
-  for (let i = 0; i <= n; i++) {
-    document.getElementById(`star-${i + 1}`).classList.add("clicked-stars")
+  if (n === -1) {
+    for (let i = 9; i > n; i--) {
+      document.getElementById(`star-${i + 1}`).classList.remove("clicked-stars")
+    }
+  } else {
+    for (let i = 0; i <= n; i++) {
+      document.getElementById(`star-${i + 1}`).classList.add("clicked-stars")
+    }
+    for (let i = 9; i > n; i--) {
+      document.getElementById(`star-${i + 1}`).classList.remove("clicked-stars")
+    }
+    feedbackValueResult = n + 1
+    return n + 1
   }
-  for (let i = 9; i > n; i--) {
-    document.getElementById(`star-${i + 1}`).classList.remove("clicked-stars")
-  }
-  console.log(n + 1)
-  return n + 1
 }
 
 // form per tutti gli input
+
+const formFeedback = document.getElementById("open-feedback")
+formFeedback.addEventListener("submit", function (e) {
+  e.preventDefault()
+  const inputFeedbackValue = document.getElementById("input-feedback").value
+  console.log("Il voto al quiz è stato:", feedbackValueResult)
+  console.log("Il commento al quiz è stato:", inputFeedbackValue)
+  formFeedback.reset()
+  feedbackValue(-1)
+})
