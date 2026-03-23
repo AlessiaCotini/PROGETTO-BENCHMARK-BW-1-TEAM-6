@@ -20,26 +20,21 @@
           friend?
         </p>
       </section>
-      <section id="iconsContainer">
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-        <img class="stars" src="./assets/star.svg" alt="star" />
-      </section>
+      <section id="iconsContainer"></section>
     </main>
     <footer>
-      <form>
-        <p>Leave us an open feedback about your experience with our quiz.</p>
-        <input type="text" placeholder="Write your comment here" />
-        <button>Submit</button>
+      <form id="open-feedback">
+        <label for="input-feedback"
+          >Leave us an open feedback about your experience with our quiz.</label
+        >
+        <input
+          type="text"
+          placeholder="Write your comment here"
+          id="input-feedback"
+        />
+        <button id="button-feedback">Submit</button>
       </form>
     </footer>
-    <script src="logica.js"></script>
+    <script src="./script/feedback_page.js"></script>
   </body>
 </html>
