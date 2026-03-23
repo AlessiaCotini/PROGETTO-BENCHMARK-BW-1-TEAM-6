@@ -1,0 +1,9 @@
+.stars {
+  filter: brightness(0.1);
+  cursor: pointer;
+}
+
+.brightness-stars,
+.clicked-stars {
+  filter: brightness(1);
+}
