@@ -1,5 +1,13 @@
 const songsId = document.getElementById("songsId");
 let i = 0;
+const buttonQuiz1 = document.createElement("button");
+const buttonQuiz2 = document.createElement("button");
+const buttonQuiz3 = document.createElement("button");
+const questionContainer = document.getElementById("questionContainer");
+const startButton = document.createElement("button");
+const displayTimer = document.getElementById("timerContainer");
+const question = document.createElement("h3");
+let timer = 30;
 const quizArray = [
   {
     name: "bittersweetsymphony",
@@ -82,14 +90,47 @@ const quizArray = [
     dontacc: "GORILLAZ",
   },
 ];
-const questionContainer = document.getElementById("questionContainer");
 
-const question = document.createElement("h3");
+startButton.innerText = "START GAME";
+startButton.classList.add("startButton");
+questionContainer.appendChild(startButton);
+displayTimer.style.opacity = 0;
+buttonQuiz1.style.opacity = 0;
+buttonQuiz2.style.opacity = 0;
+buttonQuiz3.style.opacity = 0;
+question.style.opacity = 0;
+startButton.addEventListener("click", () => {
+  displayTimer.style.opacity = 1;
+  buttonQuiz1.style.opacity = 1;
+  buttonQuiz2.style.opacity = 1;
+  buttonQuiz3.style.opacity = 1;
+  question.style.opacity = 1;
+  startButton.style.opacity = 0;
+  i = 0;
+
+  let interval = setInterval(() => {
+    displayTimer.innerHTML = timer;
+    timer--;
+    if (timer < 0) {
+      timer = 30;
+      i++;
+      songsId.pause();
+      songsId.currentTime = 0;
+      songsId.src = quizArray[i].src;
+      buttonQuiz1.textContent = Object.values(quizArray[i])[3];
+      buttonQuiz2.textContent = Object.values(quizArray[i])[4];
+      buttonQuiz3.textContent = Object.values(quizArray[i])[5];
+      songsId.load();
+      songsId.play();
+    }
+  }, 1000);
+  songsId.src = quizArray[i].src;
+  songsId.load();
+  songsId.play();
+});
+
 question.textContent = "What Band play this song?";
 questionContainer.appendChild(question);
-const buttonQuiz1 = document.createElement("button");
-const buttonQuiz2 = document.createElement("button");
-const buttonQuiz3 = document.createElement("button");
 
 buttonQuiz1.textContent = Object.values(quizArray[i])[3];
 buttonQuiz2.textContent = Object.values(quizArray[i])[4];
@@ -110,23 +151,7 @@ buttonQuiz2.addEventListener("click", function () {
 buttonQuiz3.addEventListener("click", function () {
   checkAnswer(5);
 });
-let timer = 30;
-let interval = setInterval(() => {
-  document.getElementById("timerContainer").innerHTML = timer;
-  timer--;
-  if (timer < 0) {
-    timer = 30;
-    i++;
-    songsId.pause();
-    songsId.currentTime = 0;
-    songsId.src = quizArray[i].src;
-    buttonQuiz1.textContent = Object.values(quizArray[i])[3];
-    buttonQuiz2.textContent = Object.values(quizArray[i])[4];
-    buttonQuiz3.textContent = Object.values(quizArray[i])[5];
-    songsId.load();
-    songsId.play();
-  }
-}, 1000);
+
 function checkAnswer(ee) {
   timer = 30;
   i++;
