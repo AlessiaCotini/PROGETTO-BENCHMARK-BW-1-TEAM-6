@@ -107,29 +107,40 @@ buttonQuiz2.addEventListener("click", function () {
 buttonQuiz3.addEventListener("click", function () {
   checkAnswer(5);
 });
+let timer = 30;
+let interval = setInterval(() => {
+  document.getElementById("timerContainer").innerHTML = timer;
+  timer--;
+  if (timer < 0) {
+    timer = 30;
+    i++;
+    songsId.pause();
+    songsId.currentTime = 0;
+
+    songsId.src = quizArray[i].src;
+    buttonQuiz1.textContent = Object.values(quizArray[i])[3];
+    buttonQuiz2.textContent = Object.values(quizArray[i])[4];
+    buttonQuiz3.textContent = Object.values(quizArray[i])[5];
+    songsId.load();
+    songsId.play();
+  }
+}, 1000);
 
 function checkAnswer(ee) {
+  timer = 30;
+  i++;
+  songsId.pause();
+  songsId.currentTime = 0;
+
+  songsId.src = quizArray[i].src;
+  buttonQuiz1.textContent = Object.values(quizArray[i])[3];
+  buttonQuiz2.textContent = Object.values(quizArray[i])[4];
+  buttonQuiz3.textContent = Object.values(quizArray[i])[5];
+  songsId.load();
+  songsId.play();
   if (Object.keys(quizArray[i])[ee] === "accepted") {
-    i++;
-    songsId.pause();
-    songsId.currentTime = 0;
-    songsId.src = quizArray[i].src;
-    buttonQuiz1.textContent = Object.values(quizArray[i])[3];
-    buttonQuiz2.textContent = Object.values(quizArray[i])[4];
-    buttonQuiz3.textContent = Object.values(quizArray[i])[5];
-    songsId.load();
-    songsId.play();
     return true;
   } else {
-    i++;
-    songsId.pause();
-    songsId.currentTime = 0;
-    songsId.src = quizArray[i].src;
-    buttonQuiz1.textContent = Object.values(quizArray[i])[3];
-    buttonQuiz2.textContent = Object.values(quizArray[i])[4];
-    buttonQuiz3.textContent = Object.values(quizArray[i])[5];
-    songsId.load();
-    songsId.play();
     return false;
   }
 }
@@ -137,7 +148,7 @@ songsId.src = quizArray[i].src;
 songsId.load();
 songsId.play();
 
-setTimeout(() => {
+/*setTimeout(() => {
   songsId.pause();
   songsId.currentTime = 0;
-}, 30000);
+}, 30000);*/
