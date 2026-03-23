@@ -1,0 +1,132 @@
+header img {
+  width: 12%;
+  padding-top: 30px;
+  height: 2%;
+  padding-bottom: 30px;
+}
+body {
+  padding-left: 5em;
+  background-image: url(../assets/bg.jpg);
+  background-size: cover;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h3 {
+  font-weight: bold;
+  color: rgb(245, 5, 173);
+}
+#instructions {
+  padding-bottom: 2.5em;
+}
+.request {
+  padding-bottom: 3.5em;
+}
+.cyberpunk-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #30cfd0;
+  border-radius: 5px;
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.cyberpunk-checkbox:before {
+  content: "";
+  background-color: #30cfd0;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.cyberpunk-checkbox:checked:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cyberpunk-checkbox-label {
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+.cyberpunk-form {
+  display: flex;
+  align-items: center;
+}
+
+.cyberpunk-checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.cyberpunk-checkbox {
+  margin-right: 8px;
+}
+
+.cyberpunk-button {
+  padding: 6px 12px;
+}
+label {
+  font-size: 1.3em;
+}
+.animated-button {
+  margin-left: 200px;
+  position: relative;
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 0 0 2px #fffffffb;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #2196f3;
+  border-radius: 10%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 5px #2195f360;
+  color: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+}
+
+.animated-button:hover span:last-child {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
