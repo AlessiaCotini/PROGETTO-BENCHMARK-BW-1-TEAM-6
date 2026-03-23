@@ -8,6 +8,7 @@ const startButton = document.createElement("button");
 const displayTimer = document.getElementById("timerContainer");
 const question = document.createElement("h3");
 let timer = 30;
+let results = [];
 const quizArray = [
   {
     name: "bittersweetsymphony",
@@ -153,22 +154,47 @@ buttonQuiz3.addEventListener("click", function () {
 });
 
 function checkAnswer(ee) {
-  timer = 30;
-  i++;
-  songsId.pause();
+  const currentQuestion = quizArray[i];
+  /*songsId.pause();
   songsId.currentTime = 0;
   songsId.src = quizArray[i].src;
   buttonQuiz1.textContent = Object.values(quizArray[i])[3];
   buttonQuiz2.textContent = Object.values(quizArray[i])[4];
   buttonQuiz3.textContent = Object.values(quizArray[i])[5];
   songsId.load();
-  songsId.play();
+  songsId.play();*/
   if (Object.keys(quizArray[i])[ee] === "accepted") {
-    return true;
+    score++;
+    console.log("Good choise!", score);
   } else {
-    return false;
+    console.log("Oh...no!");
   }
+  i++;
+  timer = 30;
+  if (i >= quizArray.length) {
+    endGame();
+    return;
+  }
+
+  songsId.pause();
+  songsId.currentTime = 0;
+  songsId.src = quizArray[i].src;
+
+  buttonQuiz1.textContent = Object.values(quizArray[i])[3];
+  buttonQuiz2.textContent = Object.values(quizArray[i])[4];
+  buttonQuiz3.textContent = Object.values(quizArray[i])[5];
+
+  songsId.load();
+  songsId.play();
 }
+/*
 songsId.src = quizArray[i].src;
 songsId.load();
-songsId.play();
+songsId.play();*/
+
+/*
+document.getElementById("scoreContainer").innerHTML = "Score: " + score;
+function endGame() {
+  songsId.pause();
+  alert(`Hai fatto ${score} su ${quizArray.length}`);
+}*/
