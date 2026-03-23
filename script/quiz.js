@@ -125,14 +125,12 @@ let interval = setInterval(() => {
     songsId.play();
   }
 }, 1000);
-
 function checkAnswer(ee) {
   timer = 30;
-  i++;
   songsId.pause();
   songsId.currentTime = 0;
-
   songsId.src = quizArray[i].src;
+  i++;
   buttonQuiz1.textContent = Object.values(quizArray[i])[3];
   buttonQuiz2.textContent = Object.values(quizArray[i])[4];
   buttonQuiz3.textContent = Object.values(quizArray[i])[5];
@@ -147,8 +145,3 @@ function checkAnswer(ee) {
 songsId.src = quizArray[i].src;
 songsId.load();
 songsId.play();
-
-/*setTimeout(() => {
-  songsId.pause();
-  songsId.currentTime = 0;
-}, 30000);*/
