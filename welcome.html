@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction</title>
+    <title>Music-quiz.com</title>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style-welcome.css" />
   </head>
   <body>
     <header>
@@ -14,16 +14,16 @@
     </header>
     <main>
       <section>
-        <h1>Welcome to your exam</h1>
+        <h1>Welcome to <b>your exam</b></h1>
       </section>
-      <section>
+      <section id="instructions">
         <h3>Instructions</h3>
         <p>
           We don't expect everyone to know the answers to all of these
           questions, so don't worry if you're unsure of a few of them.
         </p>
       </section>
-      <section>
+      <section class="request">
         <ul>
           <li>
             Each question is <b>timed</b> and can only <b>answered once.</b>
@@ -37,12 +37,14 @@
       </section>
     </main>
     <footer>
-      <form action="quiz.html">
-        <input type="checkbox" name="policy" id="promise" required />
-        <label for="promise"
-          >I promise to answer myself without help from anyone.</label
+      <form action="quiz.html" class="cyberpunk-form">
+        <label class="cyberpunk-checkbox-label">
+          <input type="checkbox" class="cyberpunk-checkbox" required />
+          I promise to answer myself without help from anyone.</label
         >
-        <button>Next</button>
+        <button class="animated-button">
+          <span>PROCEED</span> <span></span>
+        </button>
       </form>
     </footer>
 
