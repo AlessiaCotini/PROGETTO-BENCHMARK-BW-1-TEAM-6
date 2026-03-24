@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/style-quiz.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <header>
@@ -44,6 +51,15 @@
       <h1 id="readyTitle">Ready, Set...</h1>
       <section id="questionContainer">
         <audio src="" id="songsId"></audio>
+        <div class="audio-controls">
+          <button class="player" id="playBtn">
+            <i class="fas fa-play-circle"></i>
+          </button>
+          <button class="player" id="pauseBtn">
+            <i class="fas fa-pause-circle"></i>
+          </button>
+          <progress id="seekbar" value="0" max="100"></progress>
+        </div>
       </section>
       <form action="results.html">
         <button id="nextButton">Next</button>

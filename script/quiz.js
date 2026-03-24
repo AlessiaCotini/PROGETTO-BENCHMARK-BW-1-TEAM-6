@@ -1,6 +1,8 @@
 const songsId = document.getElementById("songsId");
 let i = 0;
-
+const playBtn = document.getElementById("playBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const seekbar = document.getElementById("seekbar");
 const buttonQuiz1 = document.createElement("button");
 const buttonQuiz2 = document.createElement("button");
 const buttonQuiz3 = document.createElement("button");
@@ -131,6 +133,9 @@ question.style.opacity = 0;
 nextButton.style.opacity = 0;
 readyTitle.style.opacity = 1;
 timerContainer.style.opacity = 0;
+playBtn.style.opacity = 0;
+pauseBtn.style.opacity = 0;
+seekbar.style.opacity = 0;
 
 startButton.addEventListener("click", () => {
   displayTimer.style.opacity = 1;
@@ -178,6 +183,9 @@ startButton.addEventListener("click", () => {
 });
 
 function loadQuestion() {
+  playBtn.style.opacity = 1;
+  pauseBtn.style.opacity = 1;
+  seekbar.style.opacity = 1;
   songsId.pause();
   songsId.currentTime = 0;
 
@@ -190,6 +198,26 @@ function loadQuestion() {
   buttonQuiz1.textContent = quizArray[i].answers[0];
   buttonQuiz2.textContent = quizArray[i].answers[1];
   buttonQuiz3.textContent = quizArray[i].answers[2];
+
+  playBtn.addEventListener("click", () => {
+    songsId.play();
+  });
+
+  pauseBtn.addEventListener("click", () => {
+    songsId.pause();
+  });
+  songsId.addEventListener("timeupdate", () => {
+    const progress = (songsId.currentTime / songsId.duration) * 100;
+    seekbar.value = progress || 0;
+  });
+  seekbar.addEventListener("click", (e) => {
+    const rect = seekbar.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const width = rect.width;
+
+    const percentage = clickX / width;
+    songsId.currentTime = percentage * songsId.duration;
+  });
 }
 
 question.textContent = "What Band Plays This Song?";
@@ -251,6 +279,9 @@ function endGame() {
   buttonQuiz3.style.opacity = 0;
   displayTimer.style.opacity = 0;
   timerContainer.style.opacity = 0;
+  playBtn.style.opacity = 0;
+  pauseBtn.style.opacity = 0;
+  seekbar.style.opacity = 0;
 
   const endMessage = document.createElement("h2");
   questionContainer.appendChild(endMessage);
