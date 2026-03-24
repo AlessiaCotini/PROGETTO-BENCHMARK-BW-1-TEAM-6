@@ -31,13 +31,18 @@ header {
 #timerContainer {
   padding: 0px 50px;
 }
+
+footer {
+  text-align: center;
+}
 h1 {
   font-weight: bold;
 }
 main {
   text-align: center;
 }
-.startButton {
+.startButton,
+#nextButton {
   --color: #041cf7;
   font-family: inherit;
   display: inline-block;
@@ -57,7 +62,8 @@ main {
   color: var(--color);
 }
 
-.startButton:before {
+.startButton:before,
+#nextButton:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -67,22 +73,26 @@ main {
   border-radius: 50%;
 }
 
-.startButton:hover {
+.startButton:hover,
+.nextButton:hover {
   color: #fff;
 }
 
-.startButton:before {
+.startButton:before,
+#nextButton:before {
   top: 100%;
   left: 100%;
   transition: all 0.7s;
 }
 
-.startButton:hover:before {
+.startButton:hover:before,
+#startButton:hover:before {
   top: -30px;
   left: -30px;
 }
 
-.startButton:active:before {
+.startButton:active:before,
+#nextButton:active:before {
   background: #3a0ca3;
 }
 
@@ -161,4 +171,5 @@ h3 {
 }
 h2 {
   font-size: 50px;
+  margin-bottom: 0px;
 }
