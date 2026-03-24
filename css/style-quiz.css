@@ -65,6 +65,9 @@ main {
   font-weight: 500;
   color: var(--color);
 }
+.startButton {
+  margin-top: 10em;
+}
 
 .startButton:before,
 #nextButton:before {
