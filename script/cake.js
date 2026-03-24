@@ -9,10 +9,10 @@ let wrong = total - savedScore
 new Chart(doughnut, {
   type: "doughnut",
   data: {
-    labels: ["Correct", "Wrong"],
+    labels: ["Wrong", "Correct"],
     datasets: [
       {
-        data: [correct, wrong],
+        data: [wrong, correct],
         backgroundColor: ["#C2128D ", "#00FFFF"],
         borderWidth: 0,
       },

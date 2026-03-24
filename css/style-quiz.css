@@ -6,6 +6,7 @@ header img {
 }
 main img {
   height: 20vh;
+  filter: brightness(0.1);
 }
 body {
   padding-left: 5em;
