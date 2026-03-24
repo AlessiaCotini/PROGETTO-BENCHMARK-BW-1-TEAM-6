@@ -19,3 +19,8 @@ header {
 #timerContainer {
   padding: 0px 50px;
 }
+h1 {
+  font-weight: bold;
+}
+.startButton {
+}
