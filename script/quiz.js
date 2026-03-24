@@ -189,7 +189,8 @@ function endGame() {
   buttonQuiz2.style.opacity = 0;
   buttonQuiz3.style.opacity = 0;
   displayTimer.style.opacity = 0;
+  const percentage = (score / quizArray.length) * 100;
   const endMessage = document.createElement("h2");
-  endMessage.innerText = "HEY! Let's see what is going on...";
+  endMessage.innerText = `${score} su ${quizArray.length}`;
   questionContainer.appendChild(endMessage);
 }
