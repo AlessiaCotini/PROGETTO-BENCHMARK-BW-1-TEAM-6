@@ -120,7 +120,6 @@ buttonQuiz3.style.opacity = 0
 question.style.opacity = 0
 nextButton.style.opacity = 0
 readyTitle.style.opacity = 1
-circle.style.opacity = 0
 startButton.addEventListener("click", () => {
   displayTimer.style.opacity = 1
   buttonQuiz1.style.opacity = 1
@@ -130,7 +129,6 @@ startButton.addEventListener("click", () => {
   startButton.style.opacity = 0
   readyTitle.style.opacity = 0
   timerContainer.style.opacity = 1
-  circle.style.opacity = 1
 
   i = 0
   timer = 30
@@ -163,6 +161,14 @@ startButton.addEventListener("click", () => {
   }, 1000)
 
   loadQuestion()
+
+  const footer = document.getElementById("footer")
+  footer.innerHTML = `
+      <div>
+        <p>
+          Question ${i + 1}/10
+        </p>
+      </div>`
 })
 
 function loadQuestion() {
@@ -217,6 +223,14 @@ function checkAnswer(selectedAnswer) {
     endGame()
     return
   }
+
+  const footer = document.getElementById("footer")
+  footer.innerHTML = `
+      <div>
+        <p>
+          Question ${i + 1}/10
+        </p>
+      </div>`
 
   loadQuestion()
 }
