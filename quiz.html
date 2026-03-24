@@ -13,8 +13,32 @@
       <a href="welcome.html">
         <img src="./assets/epicode_logo.png" alt="logoepic"
       /></a>
-      <section id="timerContainer">
-        <h4>parte del timer</h4>
+      <section id="timerContainer" class="timer-wrapper">
+        <svg width="120" height="120">
+          
+          <circle
+            cx="60"
+            cy="60"
+            r="50"
+            stroke="#ddd"
+            stroke-width="8"
+            fill="none"
+          />
+
+          <circle
+            id="progressCircle"
+            cx="60"
+            cy="60"
+            r="50"
+            stroke="#00FFFF"
+            stroke-width="8"
+            fill="none"
+            stroke-linecap="round"
+            transform="rotate(-90 60 60)"
+          />
+        </svg>
+
+        <div id="timerText">30</div>
       </section>
     </header>
     <main>

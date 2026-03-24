@@ -1,18 +1,35 @@
 const songsId = document.getElementById("songsId")
 let i = 0
+
 const buttonQuiz1 = document.createElement("button")
 const buttonQuiz2 = document.createElement("button")
 const buttonQuiz3 = document.createElement("button")
+
 const questionContainer = document.getElementById("questionContainer")
 const startButton = document.createElement("button")
-const displayTimer = document.getElementById("timerContainer")
+
+const displayTimer = document.getElementById("timerText")
+const circle = document.getElementById("progressCircle")
+
 const question = document.createElement("h3")
 const nextButton = document.getElementById("nextButton")
 const readyTitle = document.getElementById("readyTitle")
+const timerContainer = document.getElementById("timerContainer")
 let timer = 30
-let results = []
 let interval
 let score = 0
+
+const radius = 50
+const circumference = 2 * Math.PI * radius
+
+circle.style.strokeDasharray = circumference
+circle.style.strokeDashoffset = circumference
+
+const updateCircle = (timeLeft) => {
+  const progress = timeLeft / 30
+  circle.style.strokeDashoffset = circumference * (1 - progress)
+}
+
 const quizArray = [
   {
     name: "bittersweetsymphony",
@@ -111,13 +128,27 @@ startButton.addEventListener("click", () => {
   question.style.opacity = 1
   startButton.style.opacity = 0
   readyTitle.style.opacity = 0
+  timerContainer.style.opacity = 1
+
   i = 0
+  timer = 30
+  updateCircle(timer)
+
   interval = setInterval(() => {
-    displayTimer.innerHTML = timer
+    displayTimer.textContent = timer
+    updateCircle(timer)
+
+    if (timer <= 10) {
+      circle.style.stroke = "red"
+    } else {
+      circle.style.stroke = "#00FFFF"
+    }
+
     timer--
 
     if (timer < 0) {
       timer = 30
+      updateCircle(timer)
       i++
 
       if (i >= quizArray.length) {
@@ -125,60 +156,14 @@ startButton.addEventListener("click", () => {
         return
       }
 
-      songsId.pause()
-      songsId.currentTime = 0
-
-      songsId.src = quizArray[i].src
-      songsId.load()
-      songsId.play()
-
-      question.textContent = quizArray[i].question
-
-      buttonQuiz1.textContent = quizArray[i].answers[0]
-      buttonQuiz2.textContent = quizArray[i].answers[1]
-      buttonQuiz3.textContent = quizArray[i].answers[2]
+      loadQuestion()
     }
   }, 1000)
-  songsId.src = quizArray[i].src
-  songsId.load()
-  songsId.play()
-})
-question.textContent = "What Band play this song?"
-questionContainer.appendChild(question)
-buttonQuiz1.textContent = quizArray[i].answers[0]
-buttonQuiz2.textContent = quizArray[i].answers[1]
-buttonQuiz3.textContent = quizArray[i].answers[2]
-buttonQuiz1.classList.add("quizButton")
-buttonQuiz2.classList.add("quizButton")
-buttonQuiz3.classList.add("quizButton")
-questionContainer.appendChild(buttonQuiz1)
-questionContainer.appendChild(buttonQuiz2)
-questionContainer.appendChild(buttonQuiz3)
-buttonQuiz1.addEventListener("click", function () {
-  checkAnswer(buttonQuiz1.textContent)
-})
-buttonQuiz2.addEventListener("click", function () {
-  checkAnswer(buttonQuiz2.textContent)
-})
-buttonQuiz3.addEventListener("click", function () {
-  checkAnswer(buttonQuiz3.textContent)
-})
-function checkAnswer(selectedAnswer) {
-  if (selectedAnswer === quizArray[i].accepted) {
-    score++
-    console.log("Good!", score)
-  } else {
-    console.log("Oh no,try again!")
-  }
 
-  i++
-  timer = 30
+  loadQuestion()
+})
 
-  if (i >= quizArray.length) {
-    endGame()
-    return
-  }
-
+function loadQuestion() {
   songsId.pause()
   songsId.currentTime = 0
 
@@ -193,17 +178,66 @@ function checkAnswer(selectedAnswer) {
   buttonQuiz3.textContent = quizArray[i].answers[2]
 }
 
+question.textContent = "What Band play this song?"
+questionContainer.appendChild(question)
+
+buttonQuiz1.classList.add("quizButton")
+buttonQuiz2.classList.add("quizButton")
+buttonQuiz3.classList.add("quizButton")
+
+questionContainer.appendChild(buttonQuiz1)
+questionContainer.appendChild(buttonQuiz2)
+questionContainer.appendChild(buttonQuiz3)
+
+buttonQuiz1.addEventListener("click", () =>
+  checkAnswer(buttonQuiz1.textContent),
+)
+buttonQuiz2.addEventListener("click", () =>
+  checkAnswer(buttonQuiz2.textContent),
+)
+buttonQuiz3.addEventListener("click", () =>
+  checkAnswer(buttonQuiz3.textContent),
+)
+
+function checkAnswer(selectedAnswer) {
+  if (selectedAnswer === quizArray[i].accepted) {
+    score++
+    console.log("Good!", score)
+  } else {
+    console.log("Wrong!")
+  }
+
+  i++
+  timer = 30
+  updateCircle(timer)
+
+  if (i >= quizArray.length) {
+    endGame()
+    return
+  }
+
+  loadQuestion()
+}
+
 function endGame() {
+  clearInterval(interval)
+
   songsId.pause()
   songsId.currentTime = 0
+
   question.style.opacity = 0
   buttonQuiz1.style.opacity = 0
   buttonQuiz2.style.opacity = 0
   buttonQuiz3.style.opacity = 0
   displayTimer.style.opacity = 0
+  timerContainer.style.opacity = 0
+
   const endMessage = document.createElement("h2")
+  endMessage.textContent = `Your score: ${score}/${quizArray.length}`
   questionContainer.appendChild(endMessage)
+
   localStorage.setItem("score", score)
   localStorage.setItem("total", quizArray.length)
+
   nextButton.style.opacity = 1
 }
