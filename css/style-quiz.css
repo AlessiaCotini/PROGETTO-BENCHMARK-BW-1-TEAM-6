@@ -44,7 +44,7 @@ main {
   width: 8em;
   height: 2.6em;
   line-height: 2.5em;
-  margin: 20px;
+  margin: 20px 0px 0px 0px;
   position: relative;
   cursor: pointer;
   overflow: hidden;
@@ -97,10 +97,68 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 22px;
+  font-size: 50px;
   font-weight: bold;
 }
-
 #progressCircle {
   transition: stroke-dashoffset 1s linear;
+}
+h1 {
+  margin-bottom: 0;
+}
+h3 {
+  font-size: 50px;
+  font-weight: 700;
+  margin: 0;
+  padding-bottom: 50px;
+}
+.quizButton {
+  --color: #041cf7;
+  font-family: inherit;
+  display: inline-block;
+  width: auto;
+  height: 2.6em;
+  line-height: 2.5em;
+  margin: 20px 10px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+}
+.quizButton:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.quizButton:hover {
+  color: #fff;
+}
+
+.quizButton:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.quizButton:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.quizButton:active:before {
+  background: #3a0ca3;
+}
+h2 {
+  font-size: 50px;
 }
