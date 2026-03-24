@@ -30,6 +30,16 @@ const updateCircle = (timeLeft) => {
   circle.style.strokeDashoffset = circumference * (1 - progress)
 }
 
+const footer = document.getElementById("footer")
+const updateCounter = () => {
+  footer.innerHTML = `
+      <div>
+        <p>
+          Questions ${i + 1}/10
+        </p>
+      </div>`
+}
+
 const quizArray = [
   {
     name: "bittersweetsymphony",
@@ -159,18 +169,12 @@ startButton.addEventListener("click", () => {
       }
 
       loadQuestion()
+      updateCounter()
     }
   }, 1000)
 
   loadQuestion()
-
-  const footer = document.getElementById("footer")
-  footer.innerHTML = `
-      <div>
-        <p>
-          Question ${i + 1}/10
-        </p>
-      </div>`
+  updateCounter()
 })
 
 function loadQuestion() {
@@ -190,12 +194,7 @@ function loadQuestion() {
 
 question.textContent = "What Band play this song?"
 questionContainer.appendChild(question)
-const gif = document.createElement("img")
-gif.src = "../assets/mxjfiles-soundwave-23744.gif"
-gif.alt = "waves"
-gif.style.display = "block"
-gif.style.margin = "0px auto"
-questionContainer.appendChild(gif)
+
 buttonQuiz1.classList.add("quizButton")
 buttonQuiz2.classList.add("quizButton")
 buttonQuiz3.classList.add("quizButton")
@@ -231,15 +230,8 @@ function checkAnswer(selectedAnswer) {
     return
   }
 
-  const footer = document.getElementById("footer")
-  footer.innerHTML = `
-      <div>
-        <p>
-          Question ${i + 1}/10
-        </p>
-      </div>`
-
   loadQuestion()
+  updateCounter()
 }
 
 function endGame() {
@@ -247,16 +239,20 @@ function endGame() {
 
   songsId.pause()
   songsId.currentTime = 0
-  nextButton.style.opacity = 1
+
   question.style.opacity = 0
   buttonQuiz1.style.opacity = 0
   buttonQuiz2.style.opacity = 0
   buttonQuiz3.style.opacity = 0
   displayTimer.style.opacity = 0
   timerContainer.style.opacity = 0
+
   const endMessage = document.createElement("h2")
+  endMessage.textContent = `Your score: ${score}/${quizArray.length}`
   questionContainer.appendChild(endMessage)
 
   localStorage.setItem("score", score)
   localStorage.setItem("total", quizArray.length)
+
+  nextButton.style.opacity = 1
 }
