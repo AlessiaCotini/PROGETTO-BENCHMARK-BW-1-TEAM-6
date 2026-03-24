@@ -154,9 +154,9 @@ buttonQuiz3.addEventListener("click", function () {
 function checkAnswer(selectedAnswer) {
   if (selectedAnswer === quizArray[i].accepted) {
     score++;
-    console.log("✅ Giusto! Punteggio:", score);
+    console.log("Good!", score);
   } else {
-    console.log("❌ Sbagliato!");
+    console.log("Oh no,try again!");
   }
 
   i++;
@@ -189,8 +189,8 @@ function endGame() {
   buttonQuiz2.style.opacity = 0;
   buttonQuiz3.style.opacity = 0;
   displayTimer.style.opacity = 0;
-  const percentage = (score / quizArray.length) * 100;
   const endMessage = document.createElement("h2");
-  endMessage.innerText = `${score} su ${quizArray.length}`;
   questionContainer.appendChild(endMessage);
+  localStorage.setItem("score", score);
+  localStorage.setItem("total", quizArray.length);
 }
