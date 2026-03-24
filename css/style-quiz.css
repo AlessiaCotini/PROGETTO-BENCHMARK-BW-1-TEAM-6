@@ -67,7 +67,7 @@ main {
   color: var(--color);
 }
 .startButton {
-  margin-top: 10em;
+  margin-top: 6em;
 }
 
 .startButton:before,
