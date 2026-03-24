@@ -6,25 +6,30 @@
     <title>Results Quiz!</title>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/normalize.css" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style-results.css" />
   </head>
   <body>
     <header>
-      <img src="./assets/epicode_logo.png" alt="logoepic" />
+      <a href="welcome.html">
+        <img src="./assets/epicode_logo.png" alt="logoepic"
+      /></a>
     </header>
     <main>
-      <section>
+      <section id="title">
         <h1>Results</h1>
         <p>The summary of your answers:</p>
       </section>
-
-      <section class="inline" id="correct"></section>
-      <canvas id="cakeResult"></canvas>
-      <section class="inline" id="wrong"></section>
+      <div>
+        <section class="inline" id="correct"></section>
+        <canvas id="cakeResult"></canvas>
+        <section class="inline" id="wrong"></section>
+      </div>
     </main>
     <footer>
       <form action="feedback.html">
-        <button>RATE US</button>
+        <button class="animated-button">
+          <span>RATE US!</span> <span></span>
+        </button>
       </form>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
