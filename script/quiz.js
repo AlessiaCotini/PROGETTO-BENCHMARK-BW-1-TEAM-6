@@ -194,7 +194,12 @@ function loadQuestion() {
 
 question.textContent = "What Band play this song?"
 questionContainer.appendChild(question)
-
+const gif = document.createElement("img")
+gif.src = "../assets/mxjfiles-soundwave-23744.gif"
+gif.alt = "waves"
+gif.style.display = "block"
+gif.style.margin = "0px auto"
+questionContainer.appendChild(gif)
 buttonQuiz1.classList.add("quizButton")
 buttonQuiz2.classList.add("quizButton")
 buttonQuiz3.classList.add("quizButton")
