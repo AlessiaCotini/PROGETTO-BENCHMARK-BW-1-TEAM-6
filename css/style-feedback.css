@@ -15,8 +15,20 @@ header img {
 }
 body {
   padding-left: 5em;
-  background-image: url(../assets/bg.jpg);
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #001d51 0%,
+    #001359 14.286%,
+    #200b64 28.571%,
+    #4c0572 42.857%,
+    #7b0082 57.143%,
+    #a60095 71.429%,
+    #c700a9 85.714%,
+    #d700c0 100%
+  );
   background-size: cover;
+  background-repeat: no-repeat;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
 }

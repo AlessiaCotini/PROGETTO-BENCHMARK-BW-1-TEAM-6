@@ -6,8 +6,20 @@ header img {
 }
 body {
   padding-left: 5em;
-  background-image: url(../assets/bg.jpg);
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #001d51 0%,
+    #001359 14.286%,
+    #200b64 28.571%,
+    #4c0572 42.857%,
+    #7b0082 57.143%,
+    #a60095 71.429%,
+    #c700a9 85.714%,
+    #d700c0 100%
+  );
   background-size: cover;
+  background-repeat: no-repeat;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -18,4 +30,58 @@ header {
 }
 #timerContainer {
   padding: 0px 50px;
+}
+h1 {
+  font-weight: bold;
+}
+main {
+  text-align: center;
+}
+.startButton {
+  --color: #041cf7;
+  font-family: inherit;
+  display: inline-block;
+  width: 8em;
+  height: 2.6em;
+  line-height: 2.5em;
+  margin: 20px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 17px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+}
+
+.startButton:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+}
+
+.startButton:hover {
+  color: #fff;
+}
+
+.startButton:before {
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.startButton:hover:before {
+  top: -30px;
+  left: -30px;
+}
+
+.startButton:active:before {
+  background: #3a0ca3;
 }
