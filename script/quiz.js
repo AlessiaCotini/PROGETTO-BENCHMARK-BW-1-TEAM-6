@@ -37,15 +37,10 @@ const updateCounter = () => {
   footer.innerHTML = `
       <div>
         <p>
-          Questions ${i + 1}/${quizArray.length}
+          Questions ${i + 1}/10
         </p>
       </div>`;
 };
-
-let easyValue = false;
-let hardValue = false;
-const easyButton = () => (easyValue = true);
-const hardButton = () => (hardValue = true);
 
 const quizArrayEasy = [
   {
@@ -119,7 +114,7 @@ const quizArrayEasy = [
     accepted: "NICKY MINAJ",
   },
 ];
-const quizArrayHard = [
+const quizArray = [
   {
     name: "bittersweetsymphony",
     src: "../assets/audio/Bitter Sweet Siymphony- The verve.mp3",
@@ -191,17 +186,6 @@ const quizArrayHard = [
     accepted: "PUPO",
   },
 ];
-
-let quizArray = [];
-
-if (easyValue && hardValue) {
-  quizArray = quizArrayHard.concat(quizArrayEasy);
-} else if (hardValue) {
-  quizArray = quizArrayHard;
-} else {
-  quizArray = quizArrayEasy;
-}
-
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -325,13 +309,13 @@ questionContainer.appendChild(buttonQuiz2);
 questionContainer.appendChild(buttonQuiz3);
 
 buttonQuiz1.addEventListener("click", () =>
-  checkAnswer(buttonQuiz1.textContent),
+  checkAnswer(buttonQuiz1.textContent, buttonQuiz1),
 );
 buttonQuiz2.addEventListener("click", () =>
-  checkAnswer(buttonQuiz2.textContent),
+  checkAnswer(buttonQuiz2.textContent, buttonQuiz2),
 );
 buttonQuiz3.addEventListener("click", () =>
-  checkAnswer(buttonQuiz3.textContent),
+  checkAnswer(buttonQuiz3.textContent, buttonQuiz3),
 );
 
 function checkAnswer(selectedAnswer, buttonClicked) {
@@ -342,21 +326,40 @@ function checkAnswer(selectedAnswer, buttonClicked) {
   if (selectedAnswer === quizArray[i].accepted) {
     score++;
     console.log("Good!", score);
+    buttonClicked.style.borderColor = "green";
   } else {
     console.log("Wrong!");
+    buttonClicked.style.borderColor = "red";
+    if (buttonQuiz1.textContent === quizArray[i].accepted) {
+      buttonQuiz1.style.borderColor = "green";
+    }
+    if (buttonQuiz2.textContent === quizArray[i].accepted) {
+      buttonQuiz2.style.borderColor = "green";
+    }
+    if (buttonQuiz3.textContent === quizArray[i].accepted) {
+      buttonQuiz3.style.borderColor = "green";
+    }
   }
+  setTimeout(() => {
+    buttonQuiz1.style.borderColor = "";
+    buttonQuiz2.style.borderColor = "";
+    buttonQuiz3.style.borderColor = "";
+    buttonQuiz1.disabled = false;
+    buttonQuiz2.disabled = false;
+    buttonQuiz3.disabled = false;
 
-  i++;
-  timer = 30;
-  updateCircle(timer);
+    i++;
+    timer = 30;
+    updateCircle(timer);
 
-  if (i >= quizArray.length) {
-    endGame();
-    return;
-  }
+    if (i >= quizArray.length) {
+      endGame();
+      return;
+    }
 
-  loadQuestion();
-  updateCounter();
+    loadQuestion();
+    updateCounter();
+  }, 1000);
 }
 
 function endGame() {
