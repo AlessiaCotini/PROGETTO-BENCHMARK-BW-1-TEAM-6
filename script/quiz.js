@@ -37,89 +37,12 @@ const updateCounter = () => {
   footer.innerHTML = `
       <div>
         <p>
-          Questions ${i + 1}/${quizArray.length}
+          Questions ${i + 1}/10
         </p>
       </div>`;
 };
 
-let easyValue = false;
-let hardValue = false;
-const easyButton = () => (easyValue = true);
-const hardButton = () => (hardValue = true);
-
-const quizArrayEasy = [
-  {
-    name: "billiejean",
-    src: "../assets/audio/billie jean-europe.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["MICHAEL JACKSON", "MANU CHAO", "YUNGBULD"],
-    accepted: "MICHAEL JACKSON",
-  },
-  {
-    name: "bohemianrapsody",
-    src: "../assets/audio/bohemianrapsody-queen.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["MACHINE GUN KELLY", "QUEEN", "WITNEY"],
-    accepted: "QUEEN",
-  },
-  {
-    name: "themonster",
-    src: "../assets/audio/the monster-rih eminem.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["ALBANO", "EMINEM-RIHANNA", "BOB MARLEY"],
-    accepted: "EMINEM-RIHANNA",
-  },
-  {
-    name: "diamonds",
-    src: "../assets/audio/diamonds-rihanna.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["CARL COX", "RIHANNA", "LUCIO CORSI"],
-    accepted: "RIHANNA",
-  },
-  {
-    name: "heroes",
-    src: "../assets/audio/heroes-david bowie.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["MICHAEL JACKSON", "NINA KRAVIZ", "DAVID BOWIE"],
-    accepted: "DAVID BOWIE",
-  },
-  {
-    name: "highwaytohell",
-    src: "../assets/audio/high way to hell-acdc.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["NOTORIUS B.I.G.", "ACDC", "MINA"],
-    accepted: "ACDC",
-  },
-  {
-    name: "imissu",
-    src: "../assets/audio/i miss u -blink.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["SNOOP DOG", "BLINK-182", "WAVES"],
-    accepted: "BLINK-182",
-  },
-  {
-    name: "intheend",
-    src: "../assets/audio/in the end-linkin.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["MACKLEMORE", "LINKIN PARK", "METALLICA"],
-    accepted: "LINKIN PARK",
-  },
-  {
-    name: "she",
-    src: "../assets/audio/she-green day.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["SIMPLE PLAN", "GREEN DAY", "SUM 41"],
-    accepted: "GREEN DAY",
-  },
-  {
-    name: "starship",
-    src: "../assets/audio/starships-nicky minaj.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["BEYONCE", "SHAKIRA", "NICKY MINAJ"],
-    accepted: "NICKY MINAJ",
-  },
-];
-const quizArrayHard = [
+const quizArray = [
   {
     name: "bittersweetsymphony",
     src: "../assets/audio/Bitter Sweet Siymphony- The verve.mp3",
@@ -191,17 +114,6 @@ const quizArrayHard = [
     accepted: "PUPO",
   },
 ];
-
-let quizArray = [];
-
-if (easyValue && hardValue) {
-  quizArray = quizArrayHard.concat(quizArrayEasy);
-} else if (hardValue) {
-  quizArray = quizArrayHard;
-} else {
-  quizArray = quizArrayEasy;
-}
-
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -334,11 +246,7 @@ buttonQuiz3.addEventListener("click", () =>
   checkAnswer(buttonQuiz3.textContent),
 );
 
-function checkAnswer(selectedAnswer, buttonClicked) {
-  buttonQuiz1.disabled = true;
-  buttonQuiz2.disabled = true;
-  buttonQuiz3.disabled = true;
-
+function checkAnswer(selectedAnswer) {
   if (selectedAnswer === quizArray[i].accepted) {
     score++;
     console.log("Good!", score);
