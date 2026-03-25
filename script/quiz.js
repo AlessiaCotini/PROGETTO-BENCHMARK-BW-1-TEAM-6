@@ -37,10 +37,15 @@ const updateCounter = () => {
   footer.innerHTML = `
       <div>
         <p>
-          Questions ${i + 1}/10
+          Questions ${i + 1}/${quizArray.length}
         </p>
       </div>`;
 };
+
+let easyValue = false;
+let hardValue = false;
+const easyButton = () => (easyValue = true);
+const hardButton = () => (hardValue = true);
 
 const quizArrayEasy = [
   {
@@ -114,7 +119,7 @@ const quizArrayEasy = [
     accepted: "NICKY MINAJ",
   },
 ];
-const quizArray = [
+const quizArrayHard = [
   {
     name: "bittersweetsymphony",
     src: "../assets/audio/Bitter Sweet Siymphony- The verve.mp3",
@@ -186,6 +191,17 @@ const quizArray = [
     accepted: "PUPO",
   },
 ];
+
+let quizArray = [];
+
+if (easyValue && hardValue) {
+  quizArray = quizArrayHard.concat(quizArrayEasy);
+} else if (hardValue) {
+  quizArray = quizArrayHard;
+} else {
+  quizArray = quizArrayEasy;
+}
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
