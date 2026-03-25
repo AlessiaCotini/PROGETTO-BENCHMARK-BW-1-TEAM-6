@@ -7,34 +7,25 @@ header img {
 }
 body {
   min-height: 100vh;
-  /*  background: linear-gradient(
-    135deg,
-    #001d51 0%,
-    #001359 14.286%,
-    #200b64 28.571%,
-    #4c0572 42.857%,
-    #7b0082 57.143%,
-    #a60095 71.429%,
-    #c700a9 85.714%,
-    #d700c0 100%
-  ); */
-  background-image: url(../assets/Music_background.png);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: bold;
+   background-image: url(../assets/topppp.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: "Bricolage Grotesque", sans-serif;
-  font-weight: bold;
 }
-h2 h4{
-padding : 10em;
+h2, h4{
+padding : 2em;
   margin-top: 0;
   padding-top: 0;
-color: black
+text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+color: #fff;
 }
 main img {
   border-radius: 10%;
-  border: 5px solid black;
+  border: 2px solid black;
 }
 main {
   text-align: center;
@@ -57,8 +48,13 @@ main {
   align-items: center;
 }
 a{
-  color: black;
+  text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
+color: #ffffffa5;
 }
 p{
   max-width: 215px;
+}
+#logoDiv{
+filter: invert(1);
 }
