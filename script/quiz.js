@@ -42,78 +42,6 @@ const updateCounter = () => {
       </div>`;
 };
 
-const quizArrayEasy = [
-  {
-    name: "billiejean",
-    src: "../assets/audio/billie jean-europe.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["MICHAEL JACKSON", "MANU CHAO", "YUNGBULD"],
-    accepted: "MICHAEL JACKSON",
-  },
-  {
-    name: "bohemianrapsody",
-    src: "../assets/audio/bohemianrapsody-queen.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["MACHINE GUN KELLY", "QUEEN", "WITNEY"],
-    accepted: "QUEEN",
-  },
-  {
-    name: "themonster",
-    src: "../assets/audio/the monster-rih eminem.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["ALBANO", "EMINEM-RIHANNA", "BOB MARLEY"],
-    accepted: "EMINEM-RIHANNA",
-  },
-  {
-    name: "diamonds",
-    src: "../assets/audio/diamonds-rihanna.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["CARL COX", "RIHANNA", "LUCIO CORSI"],
-    accepted: "RIHANNA",
-  },
-  {
-    name: "heroes",
-    src: "../assets/audio/heroes-david bowie.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["MICHAEL JACKSON", "NINA KRAVIZ", "DAVID BOWIE"],
-    accepted: "DAVID BOWIE",
-  },
-  {
-    name: "highwaytohell",
-    src: "../assets/audio/high way to hell-acdc.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["NOTORIUS B.I.G.", "ACDC", "MINA"],
-    accepted: "ACDC",
-  },
-  {
-    name: "imissu",
-    src: "../assets/audio/i miss u -blink.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["SNOOP DOG", "BLINK-182", "WAVES"],
-    accepted: "BLINK-182",
-  },
-  {
-    name: "intheend",
-    src: "../assets/audio/in the end-linkin.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["MACKLEMORE", "LINKIN PARK", "METALLICA"],
-    accepted: "LINKIN PARK",
-  },
-  {
-    name: "she",
-    src: "../assets/audio/she-green day.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["SIMPLE PLAN", "GREEN DAY", "SUM 41"],
-    accepted: "GREEN DAY",
-  },
-  {
-    name: "starship",
-    src: "../assets/audio/starships-nicky minaj.mp3",
-    question: "What Band Plays This Song?",
-    answers: ["BEYONCE", "SHAKIRA", "NICKY MINAJ"],
-    accepted: "NICKY MINAJ",
-  },
-];
 const quizArray = [
   {
     name: "bittersweetsymphony",
@@ -309,57 +237,34 @@ questionContainer.appendChild(buttonQuiz2);
 questionContainer.appendChild(buttonQuiz3);
 
 buttonQuiz1.addEventListener("click", () =>
-  checkAnswer(buttonQuiz1.textContent, buttonQuiz1),
+  checkAnswer(buttonQuiz1.textContent),
 );
 buttonQuiz2.addEventListener("click", () =>
-  checkAnswer(buttonQuiz2.textContent, buttonQuiz2),
+  checkAnswer(buttonQuiz2.textContent),
 );
 buttonQuiz3.addEventListener("click", () =>
-  checkAnswer(buttonQuiz3.textContent, buttonQuiz3),
+  checkAnswer(buttonQuiz3.textContent),
 );
 
-function checkAnswer(selectedAnswer, buttonClicked) {
-  buttonQuiz1.disabled = true;
-  buttonQuiz2.disabled = true;
-  buttonQuiz3.disabled = true;
-
+function checkAnswer(selectedAnswer) {
   if (selectedAnswer === quizArray[i].accepted) {
     score++;
     console.log("Good!", score);
-    buttonClicked.style.borderColor = "green";
   } else {
     console.log("Wrong!");
-    buttonClicked.style.borderColor = "red";
-    if (buttonQuiz1.textContent === quizArray[i].accepted) {
-      buttonQuiz1.style.borderColor = "green";
-    }
-    if (buttonQuiz2.textContent === quizArray[i].accepted) {
-      buttonQuiz2.style.borderColor = "green";
-    }
-    if (buttonQuiz3.textContent === quizArray[i].accepted) {
-      buttonQuiz3.style.borderColor = "green";
-    }
   }
-  setTimeout(() => {
-    buttonQuiz1.style.borderColor = "";
-    buttonQuiz2.style.borderColor = "";
-    buttonQuiz3.style.borderColor = "";
-    buttonQuiz1.disabled = false;
-    buttonQuiz2.disabled = false;
-    buttonQuiz3.disabled = false;
 
-    i++;
-    timer = 30;
-    updateCircle(timer);
+  i++;
+  timer = 30;
+  updateCircle(timer);
 
-    if (i >= quizArray.length) {
-      endGame();
-      return;
-    }
+  if (i >= quizArray.length) {
+    endGame();
+    return;
+  }
 
-    loadQuestion();
-    updateCounter();
-  }, 1000);
+  loadQuestion();
+  updateCounter();
 }
 
 function endGame() {
