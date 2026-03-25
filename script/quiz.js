@@ -44,8 +44,19 @@ const updateCounter = () => {
 
 let easyValue = false;
 let hardValue = false;
-const easyButton = () => (easyValue = true);
-const hardButton = () => (hardValue = true);
+let easyCounter = 0;
+let hardCounter = 0;
+const easyButton = () => {
+  easyCounter++;
+
+  easyValue = true;
+  difficultyArray();
+};
+const hardButton = () => {
+  hardValue = true;
+  difficultyArray();
+};
+
 const quizArrayEasy = [
   {
     name: "billiejean",
@@ -191,15 +202,33 @@ const quizArrayHard = [
     accepted: "PUPO",
   },
 ];
-let quizArray = [];
-if (easyValue && hardValue) {
-  quizArray = quizArrayHard.concat(quizArrayEasy);
-} else if (hardValue) {
-  quizArray = quizArrayHard;
-} else {
-  quizArray = quizArrayEasy;
-}
 
+let quizArray = [];
+const difficultyArray = () => {
+  if (easyValue && hardValue) {
+    quizArray = quizArrayHard.concat(quizArrayEasy);
+  } else if (hardValue) {
+    quizArray = quizArrayHard;
+  } else {
+    quizArray = quizArrayEasy;
+  }
+  startButton.style.opacity = 1;
+};
+
+document.getElementById("easyMode").addEventListener("change", function () {
+  if (this.checked) {
+    easyButton();
+  }
+});
+
+document.getElementById("hardMode").addEventListener("change", function () {
+  if (this.checked) {
+    hardButton();
+  }
+});
+
+// document.getElementById("hardMode").addEventListener("change", {hardButton()});
+// document.getElementById("easyMode").addEventListener("click", {easyButton()});
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -222,6 +251,7 @@ timerContainer.style.opacity = 0;
 playBtn.style.opacity = 0;
 pauseBtn.style.opacity = 0;
 seekbar.style.opacity = 0;
+startButton.style.opacity = 0;
 
 startButton.addEventListener("click", () => {
   displayTimer.style.opacity = 1;
@@ -232,6 +262,7 @@ startButton.addEventListener("click", () => {
   startButton.style.opacity = 0;
   readyTitle.style.opacity = 0;
   timerContainer.style.opacity = 1;
+  document.getElementById("difficultMode").style.opacity = 0;
 
   i = 0;
   timer = 30;
