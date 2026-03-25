@@ -44,11 +44,7 @@ const updateCounter = () => {
 
 let easyValue = false;
 let hardValue = false;
-let easyCounter = 0;
-let hardCounter = 0;
 const easyButton = () => {
-  easyCounter++;
-
   easyValue = true;
   difficultyArray();
 };
@@ -204,31 +200,35 @@ const quizArrayHard = [
 ];
 
 let quizArray = [];
-const difficultyArray = () => {
-  if (easyValue && hardValue) {
-    quizArray = quizArrayHard.concat(quizArrayEasy);
-  } else if (hardValue) {
-    quizArray = quizArrayHard;
+
+const updateDifficulty = () => {
+  const isEasy = document.getElementById("easyMode").checked;
+  const isHard = document.getElementById("hardMode").checked;
+
+  if (isEasy && isHard) {
+    quizArray = [...quizArrayEasy, ...quizArrayHard];
+  } else if (isEasy) {
+    quizArray = [...quizArrayEasy];
+  } else if (isHard) {
+    quizArray = [...quizArrayHard];
   } else {
-    quizArray = quizArrayEasy;
+    quizArray = []; //
   }
-  startButton.style.opacity = 1;
+
+  startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
+  startButton.disabled = quizArray.length === 0;
 };
 
-document.getElementById("easyMode").addEventListener("change", function () {
-  if (this.checked) {
-    easyButton();
-  }
-});
+document
+  .getElementById("easyMode")
+  .addEventListener("change", updateDifficulty);
+document
+  .getElementById("hardMode")
+  .addEventListener("change", updateDifficulty);
 
-document.getElementById("hardMode").addEventListener("change", function () {
-  if (this.checked) {
-    hardButton();
-  }
-});
+startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
+startButton.disabled = quizArray.length === 0;
 
-// document.getElementById("hardMode").addEventListener("change", {hardButton()});
-// document.getElementById("easyMode").addEventListener("click", {easyButton()});
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -251,7 +251,6 @@ timerContainer.style.opacity = 0;
 playBtn.style.opacity = 0;
 pauseBtn.style.opacity = 0;
 seekbar.style.opacity = 0;
-startButton.style.opacity = 0;
 
 startButton.addEventListener("click", () => {
   displayTimer.style.opacity = 1;
