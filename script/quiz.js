@@ -37,7 +37,7 @@ const updateCounter = () => {
   footer.innerHTML = `
       <div>
         <p>
-          Questions ${i + 1}/10
+          Questions ${i + 1}/${quizArray.length}
         </p>
       </div>`;
 };
