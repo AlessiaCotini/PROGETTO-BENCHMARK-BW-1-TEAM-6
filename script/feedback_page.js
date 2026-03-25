@@ -51,12 +51,12 @@ const feedbackValue = (n) => {
 
 // form per tutti gli input
 
-const formFeedback = document.getElementById("open-feedback")
-formFeedback.addEventListener("submit", function (e) {
-  e.preventDefault()
-  const inputFeedbackValue = document.getElementById("input-feedback").value
-  console.log("Il voto al quiz è stato:", feedbackValueResult)
-  console.log("Il commento al quiz è stato:", inputFeedbackValue)
-  formFeedback.reset()
-  feedbackValue(-1)
-})
+// const formFeedback = document.getElementById("open-feedback")
+// formFeedback.addEventListener("submit", function (e) {
+//   e.preventDefault()
+//   const inputFeedbackValue = document.getElementById("input-feedback").value
+//   console.log("Il voto al quiz è stato:", feedbackValueResult)
+//   console.log("Il commento al quiz è stato:", inputFeedbackValue)
+//   formFeedback.reset()
+//   feedbackValue(-1)
+// })
