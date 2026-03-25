@@ -1,11 +1,11 @@
-const wrongAnswer = document.getElementById("wrong")
-const correctAnswer = document.getElementById("correct")
-const doughnut = document.getElementById("cakeResult")
+const wrongAnswer = document.getElementById("wrong");
+const correctAnswer = document.getElementById("correct");
+const doughnut = document.getElementById("cakeResult");
 
-let savedScore = Number(localStorage.getItem("score"))
-let total = Number(localStorage.getItem("total"))
-let correct = savedScore
-let wrong = total - savedScore
+let savedScore = Number(localStorage.getItem("score"));
+let total = Number(localStorage.getItem("total"));
+let correct = savedScore;
+let wrong = total - savedScore;
 new Chart(doughnut, {
   type: "doughnut",
   data: {
@@ -26,7 +26,7 @@ new Chart(doughnut, {
       },
     },
   },
-})
+});
 
-correctAnswer.innerHTML = "<h2>Correct: </h2>" + " " + correct
-wrongAnswer.innerHTML = "<h2>Wrong: </h2>" + " " + wrong
+correctAnswer.innerHTML = "<h2>Correct: </h2>" + " " + correct + "0%";
+wrongAnswer.innerHTML = "<h2>Wrong: </h2>" + " " + wrong + "0%";
