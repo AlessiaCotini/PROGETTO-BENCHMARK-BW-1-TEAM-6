@@ -19,32 +19,26 @@ body {
     #d700c0 100%
   ); */
   background-image: url(../assets/Music_background.png);
-  /*   background-size: contain;
-  background-repeat: repeat; */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  text-shadow:
-    2px 0 #000,
-    -2px 0 #000,
-    0 2px #000,
-    0 -2px #000,
-    1px 1px #000,
-    -1px -1px #000,
-    1px -1px #000,
-    -1px 1px #000;
-  color: #fff;
   font-family: "Bricolage Grotesque", sans-serif;
   font-weight: bold;
 }
+h2 h4{
+padding : 10em;
+  margin-top: 0;
+  padding-top: 0;
+color: black
+}
 main img {
-  width: 215px;
-  height: 215px;
+  border-radius: 10%;
+  border: 5px solid black;
 }
 main {
   text-align: center;
-  padding: 1em;
+
 }
 .container,
 .container2,
@@ -61,4 +55,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+a{
+  color: black;
+}
+p{
+  max-width: 215px;
 }
