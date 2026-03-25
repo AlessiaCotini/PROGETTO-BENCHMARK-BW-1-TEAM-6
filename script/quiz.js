@@ -214,7 +214,7 @@ const updateDifficulty = () => {
   } else {
     quizArray = []; //
   }
-
+  shuffle(quizArray);
   startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
   startButton.disabled = quizArray.length === 0;
 };
@@ -236,7 +236,7 @@ function shuffle(array) {
   }
   return array;
 }
-shuffle(quizArray);
+
 startButton.innerText = "Let's GOOO!!";
 startButton.classList.add("startButton");
 questionContainer.appendChild(startButton);
