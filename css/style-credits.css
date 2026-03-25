@@ -2,26 +2,33 @@
 header img {
   width: 20%;
   height: 5%;
-  padding-bottom: 20px;
   padding-left: 3em;
 }
 body {
   min-height: 100vh;
   font-family: "Bricolage Grotesque", sans-serif;
   font-weight: bold;
-   background-image: url(../assets/topppp.png);
+  background-image: url(../assets/topppp.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-h2, h4{
-padding : 2em;
+h2,
+h4 {
+  padding: 2em;
   margin-top: 0;
   padding-top: 0;
-text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
-1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
-color: #fff;
+  text-shadow:
+    2px 0 #000,
+    -2px 0 #000,
+    0 2px #000,
+    0 -2px #000,
+    1px 1px #000,
+    -1px -1px #000,
+    1px -1px #000,
+    -1px 1px #000;
+  color: #fff;
 }
 main img {
   border-radius: 10%;
@@ -29,7 +36,6 @@ main img {
 }
 main {
   text-align: center;
-
 }
 .container,
 .container2,
@@ -48,14 +54,21 @@ main {
   justify-content: center;
   align-items: center;
 }
-a{
-  text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
-1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000;
-color: #ffffffa5;
+a {
+  text-shadow:
+    2px 0 #000,
+    -2px 0 #000,
+    0 2px #000,
+    0 -2px #000,
+    1px 1px #000,
+    -1px -1px #000,
+    1px -1px #000,
+    -1px 1px #000;
+  color: #ffffff;
 }
-p{
+p {
   max-width: 215px;
 }
-#logoDiv{
-filter: invert(1);
+#logoDiv {
+  filter: invert(1);
 }
