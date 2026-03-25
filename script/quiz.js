@@ -37,12 +37,96 @@ const updateCounter = () => {
   footer.innerHTML = `
       <div>
         <p>
-          Questions ${i + 1}/10
+          Questions ${i + 1}/${quizArray.length}
         </p>
       </div>`;
 };
 
-const quizArray = [
+let easyValue = false;
+let hardValue = false;
+const easyButton = () => {
+  easyValue = true;
+  difficultyArray();
+};
+const hardButton = () => {
+  hardValue = true;
+  difficultyArray();
+};
+
+const quizArrayEasy = [
+  {
+    name: "billiejean",
+    src: "../assets/audio/billie jean-europe.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["MICHAEL JACKSON", "MANU CHAO", "YUNGBULD"],
+    accepted: "MICHAEL JACKSON",
+  },
+  {
+    name: "bohemianrapsody",
+    src: "../assets/audio/bohemianrapsody-queen.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["MACHINE GUN KELLY", "QUEEN", "WITNEY"],
+    accepted: "QUEEN",
+  },
+  {
+    name: "themonster",
+    src: "../assets/audio/the monster-rih eminem.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["ALBANO", "EMINEM-RIHANNA", "BOB MARLEY"],
+    accepted: "EMINEM-RIHANNA",
+  },
+  {
+    name: "diamonds",
+    src: "../assets/audio/diamonds-rihanna.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["CARL COX", "RIHANNA", "LUCIO CORSI"],
+    accepted: "RIHANNA",
+  },
+  {
+    name: "heroes",
+    src: "../assets/audio/heroes-david bowie.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["MICHAEL JACKSON", "NINA KRAVIZ", "DAVID BOWIE"],
+    accepted: "DAVID BOWIE",
+  },
+  {
+    name: "highwaytohell",
+    src: "../assets/audio/high way to hell-acdc.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["NOTORIUS B.I.G.", "ACDC", "MINA"],
+    accepted: "ACDC",
+  },
+  {
+    name: "imissu",
+    src: "../assets/audio/i miss u -blink.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["SNOOP DOG", "BLINK-182", "WAVES"],
+    accepted: "BLINK-182",
+  },
+  {
+    name: "intheend",
+    src: "../assets/audio/in the end-linkin.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["MACKLEMORE", "LINKIN PARK", "METALLICA"],
+    accepted: "LINKIN PARK",
+  },
+  {
+    name: "she",
+    src: "../assets/audio/she-green day.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["SIMPLE PLAN", "GREEN DAY", "SUM 41"],
+    accepted: "GREEN DAY",
+  },
+  {
+    name: "starship",
+    src: "../assets/audio/starships-nicky minaj.mp3",
+    question: "What Band Plays This Song?",
+    answers: ["BEYONCE", "SHAKIRA", "NICKY MINAJ"],
+    accepted: "NICKY MINAJ",
+  },
+];
+
+const quizArrayHard = [
   {
     name: "bittersweetsymphony",
     src: "../assets/audio/Bitter Sweet Siymphony- The verve.mp3",
@@ -114,6 +198,37 @@ const quizArray = [
     accepted: "PUPO",
   },
 ];
+
+let quizArray = [];
+
+const updateDifficulty = () => {
+  const isEasy = document.getElementById("easyMode").checked;
+  const isHard = document.getElementById("hardMode").checked;
+
+  if (isEasy && isHard) {
+    quizArray = [...quizArrayEasy, ...quizArrayHard];
+  } else if (isEasy) {
+    quizArray = [...quizArrayEasy];
+  } else if (isHard) {
+    quizArray = [...quizArrayHard];
+  } else {
+    quizArray = []; //
+  }
+
+  startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
+  startButton.disabled = quizArray.length === 0;
+};
+
+document
+  .getElementById("easyMode")
+  .addEventListener("change", updateDifficulty);
+document
+  .getElementById("hardMode")
+  .addEventListener("change", updateDifficulty);
+
+startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
+startButton.disabled = quizArray.length === 0;
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -146,6 +261,7 @@ startButton.addEventListener("click", () => {
   startButton.style.opacity = 0;
   readyTitle.style.opacity = 0;
   timerContainer.style.opacity = 1;
+  document.getElementById("difficultMode").style.opacity = 0;
 
   i = 0;
   timer = 30;
