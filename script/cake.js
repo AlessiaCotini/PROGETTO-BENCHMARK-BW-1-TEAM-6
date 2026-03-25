@@ -28,5 +28,6 @@ new Chart(doughnut, {
   },
 });
 
-correctAnswer.innerHTML = "<h2>Correct: </h2>" + " " + correct + "0%";
-wrongAnswer.innerHTML = "<h2>Wrong: </h2>" + " " + wrong + "0%";
+correctAnswer.innerHTML =
+  "<h2>Correct: </h2>" + " " + (correct * 100) / total + "%";
+wrongAnswer.innerHTML = "<h2>Wrong: </h2>" + " " + (wrong * 100) / total + "%";
