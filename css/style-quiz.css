@@ -49,7 +49,7 @@ main {
 .startButton,
 #nextButton {
   background-color: transparent;
-   --color: #f5f1f3;
+  --color: #f5f1f3;
   font-family: inherit;
   display: inline-block;
   width: 8em;
@@ -102,7 +102,7 @@ main {
 
 .startButton:active:before,
 #nextButton:active:before {
- background: #eedfe7;
+  background: #eedfe7;
 }
 
 .timer-wrapper {
@@ -201,6 +201,43 @@ footer p {
   justify-content: center;
   margin-top: 10px;
 }
-#difficultMode{
+
+#difficultMode {
   margin-top: 2em;
+  font-size: 20px;
+}
+label {
+  font-size: 40px;
+}
+input {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #30cfd0;
+  border-radius: 5px;
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+}
+#easyMode:checked {
+  background-color: #01e1ff;
+  border-color: transparent;
+  box-shadow: 0 0 8px #03f799;
+}
+
+#easyMode:checked::before {
+  background-color: #00ff9f;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#hardMode:checked {
+  background-color: #ff3c3c;
+  border-color: #ff3c3c;
+  box-shadow: 0 0 8px #ff3c3c;
+}
+
+#hardMode:checked::before {
+  background-color: #ff3c3c;
 }
