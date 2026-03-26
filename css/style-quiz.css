@@ -223,7 +223,7 @@ input {
 }
 #easyMode:checked {
   background-color: #01e1ff;
-  border-color: transparent;
+  border-color: #01e1ff;
   box-shadow: 0 0 8px #03f799;
 }
 
