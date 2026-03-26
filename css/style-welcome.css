@@ -143,11 +143,11 @@ label {
   height: 150px;
   opacity: 1;
 }
-#logoWelcome2{
-   filter: invert(1);
-   padding:0;
+#logoWelcome2 {
+  filter: invert(1);
+  padding: 0;
 }
-header a{
-  display:flex;
- justify-content: space-between;
+header a {
+  display: flex;
+  justify-content: space-between;
 }

@@ -9,8 +9,10 @@ main img {
   height: 20vh;
   filter: brightness(0.1);
 }
+header {
+  padding-left: 3em;
+}
 body {
-  padding-left: 5em;
   min-height: 100vh;
   background: linear-gradient(
     135deg,
