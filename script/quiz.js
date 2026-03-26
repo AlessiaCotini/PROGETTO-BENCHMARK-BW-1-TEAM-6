@@ -434,9 +434,11 @@ function endGame() {
 let quizInterrotto = false;
 
 document.addEventListener("visibilitychange", function () {
-  if (document.hidden && !quizInterrotto) {
-    quizInterrotto = true;
-    alert("Hai lasciato la pagina del quiz! Il tentativo è stato annullato.");
-    window.location.replace("welcome.html");
+  if (i < quizArray.length) {
+    if (document.hidden && !quizInterrotto) {
+      quizInterrotto = true;
+      alert("Hai lasciato la pagina del quiz! Il tentativo è stato annullato.");
+      window.location.replace("welcome.html");
+    }
   }
 });
