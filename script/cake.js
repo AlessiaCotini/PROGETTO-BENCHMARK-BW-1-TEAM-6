@@ -44,15 +44,16 @@ if (erroriSalvati.length === 0) {
   erroriSalvati.forEach((e) => {
     html += `<li>
                <strong>${e.question}</strong><br>
-               Your Choice: <span style="color:red">${e.yourChoise}</span> 🔴<br>
-               Correct Choice: <span style="color:green">${e.rightChoise}</span> 🟢
+               Your Choice: <span style="color:red">${e.yourChoice}</span> 🔴<br>
+               Correct Choice: <span style="color:green">${e.rightChoice}</span> 🟢
              </li>`;
   });
   html += "</ul>";
   resultsId.innerHTML = html;
 }
 const retryBtn = document.createElement("button");
-retryBtn.textContent = "Retry Quiz 🔄";
+retryBtn.classList.add("retryBtn");
+retryBtn.textContent = "RETRY 🤘🏽";
 retryBtn.style.marginTop = "20px";
 retryBtn.style.padding = "10px 20px";
 retryBtn.style.fontSize = "16px";
