@@ -200,6 +200,12 @@ const quizArrayHard = [
 ];
 
 let quizArray = [];
+startButton.addEventListener("click", () => {
+  if (quizArray.length === 0) {
+    alert("Seleziona almeno una difficoltà!");
+    return;
+  }
+});
 
 const updateDifficulty = () => {
   const isEasy = document.getElementById("easyMode").checked;
@@ -361,36 +367,35 @@ buttonQuiz2.addEventListener("click", () =>
 buttonQuiz3.addEventListener("click", () =>
   checkAnswer(buttonQuiz3.textContent, buttonQuiz3),
 );
-
+let resultsOfQuiz = [];
 function checkAnswer(selectedAnswer, buttonClicked) {
   buttonQuiz1.disabled = true;
   buttonQuiz2.disabled = true;
   buttonQuiz3.disabled = true;
 
-  if (selectedAnswer === quizArray[i].accepted) {
+  const correctAnswer = quizArray[i].accepted;
+
+  if (selectedAnswer === correctAnswer) {
     score++;
     console.log("Good!", score);
     buttonClicked.style.borderColor = "green";
   } else {
     console.log("Wrong!");
     buttonClicked.style.borderColor = "red";
-    if (buttonQuiz1.textContent === quizArray[i].accepted) {
-      buttonQuiz1.style.borderColor = "green";
-    }
-    if (buttonQuiz2.textContent === quizArray[i].accepted) {
-      buttonQuiz2.style.borderColor = "green";
-    }
-    if (buttonQuiz3.textContent === quizArray[i].accepted) {
-      buttonQuiz3.style.borderColor = "green";
-    }
+    resultsOfQuiz.push({
+      question: quizArray[i].question,
+      yourChoice: selectedAnswer,
+      rightChoice: correctAnswer,
+    });
+    [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+      if (btn.textContent === correctAnswer) btn.style.borderColor = "green";
+    });
   }
   setTimeout(() => {
-    buttonQuiz1.style.borderColor = "";
-    buttonQuiz2.style.borderColor = "";
-    buttonQuiz3.style.borderColor = "";
-    buttonQuiz1.disabled = false;
-    buttonQuiz2.disabled = false;
-    buttonQuiz3.disabled = false;
+    [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+      btn.style.borderColor = "";
+      btn.disabled = false;
+    });
 
     i++;
     timer = 30;
@@ -408,10 +413,11 @@ function checkAnswer(selectedAnswer, buttonClicked) {
 
 function endGame() {
   clearInterval(interval);
-
   songsId.pause();
   songsId.currentTime = 0;
-
+  localStorage.setItem("score", score);
+  localStorage.setItem("total", quizArray.length);
+  localStorage.setItem("errors", JSON.stringify(resultsOfQuiz));
   question.style.opacity = 0;
   buttonQuiz1.style.opacity = 0;
   buttonQuiz2.style.opacity = 0;
@@ -421,14 +427,10 @@ function endGame() {
   playBtn.style.opacity = 0;
   pauseBtn.style.opacity = 0;
   seekbar.style.opacity = 0;
-
-  const endMessage = document.createElement("h2");
-  questionContainer.appendChild(endMessage);
-
-  localStorage.setItem("score", score);
-  localStorage.setItem("total", quizArray.length);
-
   nextButton.style.opacity = 1;
+  nextButton.addEventListener("click", () => {
+    window.location.href = "results.html";
+  });
 }
 
 document.addEventListener("visibilitychange", function () {

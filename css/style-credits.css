@@ -8,32 +8,47 @@ body {
   min-height: 100vh;
   font-family: "Bricolage Grotesque", sans-serif;
   font-weight: bold;
-  background-image: url(../assets/topppp.png);
+  background: linear-gradient(
+    315deg,
+    #240b00 0%,
+    #21100b 16.667%,
+    #551819 33.333%,
+    #3f2328 50%,
+    #153239 66.667%,
+    #3f434a 83.333%,
+    #55585c 100%
+  );
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  /* https://grabient.com/HQJgjArANGwMwgCxWBBKztiAHCFA7AAzSwG4ZFiVEpyIEoRjXABsLQA?angle=315 */
 }
 h2,
 h4 {
   padding: 2em;
   margin-top: 0;
   padding-top: 0;
-  text-shadow:
-    2px 0 #000,
-    -2px 0 #000,
-    0 2px #000,
-    0 -2px #000,
-    1px 1px #000,
-    -1px -1px #000,
-    1px -1px #000,
-    -1px 1px #000;
-  color: #fff;
+  color: whitesmoke;
 }
 main img {
-  border-radius: 10%;
-  border: 2px solid black;
+  border-radius: 50%;
+  border: 10px solid black;
+  -webkit-mask: radial-gradient(circle, transparent 20px, black 20px);
+  mask: radial-gradient(circle, transparent 25px, black 27px);
 }
+main img:hover {
+  animation: rotation 10s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 main {
   text-align: center;
 }
@@ -54,17 +69,12 @@ main {
   justify-content: center;
   align-items: center;
 }
+.box:hover {
+  scale: 1.5;
+}
 a {
-  text-shadow:
-    2px 0 #000,
-    -2px 0 #000,
-    0 2px #000,
-    0 -2px #000,
-    1px 1px #000,
-    -1px -1px #000,
-    1px -1px #000,
-    -1px 1px #000;
-  color: #ffffff;
+  color: whitesmoke;
+  text-decoration: none;
 }
 p {
   max-width: 215px;
@@ -79,28 +89,41 @@ body {
   height: 100%;
 }
 
-body {
+/* body {
   background: linear-gradient(
     -45deg,
-    #001d51 0%,
-    #4c0572 12.5%,
-    #7b0082 25%,
-    #a60095 37.5%,
-    #d700c0 50%,
-    #a60095 62.5%,
-    #7b0082 75%,
-    #4c0572 87.5%,
-    #001d51 100%
+    #240044,
+    #240044,
+    #240044,
+    #240044,
+    #4c0572,
+    #7b0082,
+    #a60095,
+    #d700c0,
+    #a60095,
+    #7b0082,
+    #4c0572,
+    #240044,
+    #240044,
+    #240044,
+    #240044
   );
-  background-size: 600% 600%;
-  animation: gradient 7s ease infinite;
+  background-size: 2000% 2000%;
+  animation: smooth-scroll 15s linear infinite;
 }
 
-@keyframes gradient {
+@keyframes smooth-scroll {
   0% {
     background-position: 0% 50%;
   }
   100% {
     background-position: 100% 50%;
   }
+} */
+
+.box section {
+  height: 218px;
+  /*   background-color: rgb(255, 255, 255); */
+  border-radius: 50%;
+  padding-bottom: 20px;
 }

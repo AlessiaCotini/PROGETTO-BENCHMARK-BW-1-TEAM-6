@@ -51,7 +51,7 @@ div {
 h2 {
   font-size: 30px;
 }
-.animated-button {
+.animated-button, .retryBtn{
   position: relative;
   display: inline-block;
   padding: 12px 24px;

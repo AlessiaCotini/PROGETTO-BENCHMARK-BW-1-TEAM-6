@@ -6,9 +6,6 @@ const createStar = () => {
 };
 
 createStar();
-
-// funzione per colorare stelline
-
 const selectStars = (n) => {
   for (let i = 0; i <= n; i++) {
     document.getElementById(`star-${i + 1}`).classList.add("brightness-stars");
@@ -27,8 +24,6 @@ const unselectStars = (n) => {
       .classList.remove("brightness-stars");
   }
 };
-
-// click che applica la funnzione e salva il voto
 
 let feedbackValueResult = 0;
 
@@ -52,9 +47,6 @@ const feedbackValue = (n) => {
     return n + 1;
   }
 };
-
-// form per tutti gli input
-
 const formFeedback = document.getElementById("open-feedback");
 formFeedback.addEventListener("submit", function (e) {
   const inputFeedbackValue = document.getElementById("input-feedback").value;
@@ -64,3 +56,19 @@ formFeedback.addEventListener("submit", function (e) {
   feedbackValue(-1);
   localStorage.clear();
 });
+let resultsOfQuiz = [];
+function checkAnswer(selectedAnswer, array) {
+  if (selectedAnswer === array[i].accepted) {
+    resultsOfQuiz.push({
+      question: "Who Sings This Song?",
+      yourchoise: selectedAnswer,
+    });
+  } else {
+    resultsOfQuiz.push({
+      question: "Who Sings This Song?",
+      yourchoise: selectedAnswer,
+      rightchoise: array[i].accepted,
+    });
+  }
+}
+checkAnswer();
