@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
 header img {
   width: 12%;
-  padding-top: 30px;
+  padding-top: 50px;
   height: 2%;
   padding-bottom: 30px;
 }
@@ -142,4 +142,12 @@ label {
   width: 150px;
   height: 150px;
   opacity: 1;
+}
+#logoWelcome2{
+   filter: invert(1);
+   padding:0;
+}
+header a{
+  display:flex;
+ justify-content: space-between;
 }
