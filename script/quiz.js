@@ -433,12 +433,9 @@ function endGame() {
   });
 }
 
-let quizInterrotto = false;
-
 document.addEventListener("visibilitychange", function () {
-  if (document.hidden && !quizInterrotto) {
-    quizInterrotto = true;
-    alert("Hai lasciato la pagina del quiz! Il tentativo è stato annullato.");
+  if (document.hidden && i < quizArray.length) {
+    sessionStorage.setItem("quiz_annullato", "true");
     window.location.replace("welcome.html");
   }
 });
