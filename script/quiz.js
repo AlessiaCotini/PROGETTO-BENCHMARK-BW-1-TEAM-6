@@ -211,7 +211,7 @@ startButton.addEventListener("click", () => {
 const updateDifficulty = () => {
   const isEasy = document.getElementById("easyMode").checked;
   const isHard = document.getElementById("hardMode").checked;
-  const isAll = document.getElementById("allMode").checked;
+  const isAll = document.getElementById("mixedMode").checked;
 
   if (isAll) {
     quizArray = [...quizArrayEasy, ...quizArrayHard];
@@ -233,7 +233,9 @@ document
 document
   .getElementById("hardMode")
   .addEventListener("change", updateDifficulty);
-document.getElementById("allMode").addEventListener("change", updateDifficulty);
+document
+  .getElementById("mixedMode")
+  .addEventListener("change", updateDifficulty);
 
 startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
 startButton.disabled = quizArray.length === 0;
