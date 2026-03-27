@@ -42,17 +42,6 @@ const updateCounter = () => {
       </div>`;
 };
 
-// let easyValue = false;
-// let hardValue = false;
-// const easyButton = () => {
-//   easyValue = true;
-//   difficultyArray();
-// };
-// const hardButton = () => {
-//   hardValue = true;
-//   difficultyArray();
-// };
-
 const quizArrayEasy = [
   {
     name: "billiejean",
@@ -220,7 +209,7 @@ const updateDifficulty = () => {
   } else if (isHard) {
     quizArray = [...quizArrayHard];
   } else {
-    quizArray = []; //
+    quizArray = [];
   }
   shuffle(quizArray);
   startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
@@ -289,6 +278,15 @@ startButton.addEventListener("click", () => {
     }
 
     timer--;
+
+    if (timer === 0) {
+      console.log("Time is up!");
+      resultsOfQuiz.push({
+        question: quizArray[i].question,
+        yourChoice: "You didn't answer in time",
+        rightChoice: quizArray[i].accepted,
+      });
+    }
 
     if (timer < 0) {
       timer = 30;
@@ -441,6 +439,6 @@ function endGame() {
 document.addEventListener("visibilitychange", function () {
   if (document.hidden && i < quizArray.length) {
     sessionStorage.setItem("quiz_annullato", "true");
-    window.location.replace("welcome.html");
+    window.location.replace("index.html");
   }
 });

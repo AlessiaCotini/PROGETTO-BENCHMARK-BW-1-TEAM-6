@@ -86,41 +86,8 @@ body {
   height: 100%;
 }
 
-/* body {
-  background: linear-gradient(
-    -45deg,
-    #240044,
-    #240044,
-    #240044,
-    #240044,
-    #4c0572,
-    #7b0082,
-    #a60095,
-    #d700c0,
-    #a60095,
-    #7b0082,
-    #4c0572,
-    #240044,
-    #240044,
-    #240044,
-    #240044
-  );
-  background-size: 2000% 2000%;
-  animation: smooth-scroll 15s linear infinite;
-}
-
-@keyframes smooth-scroll {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
-} */
-
 .box section {
   height: 218px;
-  /*   background-color: rgb(255, 255, 255); */
   border-radius: 50%;
   padding-bottom: 20px;
 }

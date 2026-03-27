@@ -56,19 +56,3 @@ formFeedback.addEventListener("submit", function (e) {
   feedbackValue(-1);
   localStorage.clear();
 });
-let resultsOfQuiz = [];
-function checkAnswer(selectedAnswer, array) {
-  if (selectedAnswer === array[i].accepted) {
-    resultsOfQuiz.push({
-      question: "Who Sings This Song?",
-      yourchoise: selectedAnswer,
-    });
-  } else {
-    resultsOfQuiz.push({
-      question: "Who Sings This Song?",
-      yourchoise: selectedAnswer,
-      rightchoise: array[i].accepted,
-    });
-  }
-}
-checkAnswer();
