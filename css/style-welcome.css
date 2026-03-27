@@ -143,11 +143,12 @@ label {
   height: 150px;
   opacity: 1;
 }
-#logoWelcome2{
-   filter: invert(1);
-   padding:0;
+#logoWelcome2 {
+  filter: invert(1);
+  padding: 0;
+  margin: 2em 2.5em 0em 0em;
 }
-header a{
-  display:flex;
- justify-content: space-between;
+header a {
+  display: flex;
+  justify-content: space-between;
 }
