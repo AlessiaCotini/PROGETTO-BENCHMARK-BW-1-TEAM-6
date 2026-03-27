@@ -283,11 +283,11 @@ startButton.addEventListener("click", () => {
     if (timer === -1) {
       [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
         if (btn.textContent === quizArray[i].accepted) {
-          btn.style.borderColor = "green";
+          btn.style.borderColor = "lime";
         } else {
           btn.style.borderColor = "red";
         }
-        btn.style.opacity = 0.8;
+        btn.style.opacity = 0.7;
         btn.disabled = true;
       });
     }
@@ -396,9 +396,9 @@ function checkAnswer(selectedAnswer, buttonClicked) {
   if (selectedAnswer === correctAnswer) {
     score++;
     console.log("Good!", score);
-    buttonClicked.style.borderColor = "green";
+    buttonClicked.style.borderColor = "lime";
     [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
-      if (btn.textContent !== selectedAnswer) btn.style.opacity = 0.8;
+      if (btn.textContent !== selectedAnswer) btn.style.opacity = 0.7;
     });
   } else {
     console.log("Wrong!");
@@ -409,10 +409,10 @@ function checkAnswer(selectedAnswer, buttonClicked) {
       rightChoice: correctAnswer,
     });
     [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
-      if (btn.textContent === correctAnswer) btn.style.borderColor = "green";
+      if (btn.textContent === correctAnswer) btn.style.borderColor = "lime";
     });
     [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
-      if (btn.textContent !== selectedAnswer) btn.style.opacity = 0.8;
+      if (btn.textContent !== selectedAnswer) btn.style.opacity = 0.7;
     });
   }
   setTimeout(() => {
