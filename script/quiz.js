@@ -200,6 +200,7 @@ const quizArrayHard = [
 ];
 
 let quizArray = [];
+
 startButton.addEventListener("click", () => {
   if (quizArray.length === 0) {
     alert("Seleziona almeno una difficoltà!");
@@ -232,6 +233,7 @@ document
 document
   .getElementById("hardMode")
   .addEventListener("change", updateDifficulty);
+document.getElementById("allMode").addEventListener("change", updateDifficulty);
 
 startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
 startButton.disabled = quizArray.length === 0;
