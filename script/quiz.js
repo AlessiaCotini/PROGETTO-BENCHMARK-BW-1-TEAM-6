@@ -42,16 +42,16 @@ const updateCounter = () => {
       </div>`;
 };
 
-let easyValue = false;
-let hardValue = false;
-const easyButton = () => {
-  easyValue = true;
-  difficultyArray();
-};
-const hardButton = () => {
-  hardValue = true;
-  difficultyArray();
-};
+// let easyValue = false;
+// let hardValue = false;
+// const easyButton = () => {
+//   easyValue = true;
+//   difficultyArray();
+// };
+// const hardButton = () => {
+//   hardValue = true;
+//   difficultyArray();
+// };
 
 const quizArrayEasy = [
   {
@@ -210,8 +210,9 @@ startButton.addEventListener("click", () => {
 const updateDifficulty = () => {
   const isEasy = document.getElementById("easyMode").checked;
   const isHard = document.getElementById("hardMode").checked;
+  const isAll = document.getElementById("allMode").checked;
 
-  if (isEasy && isHard) {
+  if (isAll) {
     quizArray = [...quizArrayEasy, ...quizArrayHard];
   } else if (isEasy) {
     quizArray = [...quizArrayEasy];
