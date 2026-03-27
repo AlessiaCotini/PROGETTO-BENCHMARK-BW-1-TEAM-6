@@ -268,7 +268,8 @@ startButton.addEventListener("click", () => {
   updateCircle(timer);
 
   interval = setInterval(() => {
-    displayTimer.textContent = timer;
+    let timerSet = timer >= 0 ? timer : 0;
+    displayTimer.textContent = timerSet;
     updateCircle(timer);
 
     if (timer <= 10) {
@@ -279,17 +280,31 @@ startButton.addEventListener("click", () => {
 
     timer--;
 
-    if (timer === 0) {
+    if (timer === -1) {
+      [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+        if (btn.textContent === quizArray[i].accepted) {
+          btn.style.borderColor = "green";
+        } else {
+          btn.style.borderColor = "red";
+        }
+        btn.style.opacity = 0.8;
+        btn.disabled = true;
+      });
+    }
+
+    if (timer < -1) {
+      timer = 30;
       console.log("Time is up!");
       resultsOfQuiz.push({
         question: quizArray[i].question,
         yourChoice: "You didn't answer in time",
         rightChoice: quizArray[i].accepted,
       });
-    }
-
-    if (timer < 0) {
-      timer = 30;
+      [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+        btn.style.borderColor = "";
+        btn.style.opacity = 1;
+        btn.disabled = false;
+      });
       updateCircle(timer);
       i++;
 
@@ -382,6 +397,9 @@ function checkAnswer(selectedAnswer, buttonClicked) {
     score++;
     console.log("Good!", score);
     buttonClicked.style.borderColor = "green";
+    [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+      if (btn.textContent !== selectedAnswer) btn.style.opacity = 0.8;
+    });
   } else {
     console.log("Wrong!");
     buttonClicked.style.borderColor = "red";
@@ -393,11 +411,15 @@ function checkAnswer(selectedAnswer, buttonClicked) {
     [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
       if (btn.textContent === correctAnswer) btn.style.borderColor = "green";
     });
+    [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+      if (btn.textContent !== selectedAnswer) btn.style.opacity = 0.8;
+    });
   }
   setTimeout(() => {
     [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
       btn.style.borderColor = "";
       btn.disabled = false;
+      btn.style.opacity = 1;
     });
 
     i++;
