@@ -55,9 +55,11 @@ h2 {
 }
 .animated-button,
 .retryBtn {
+  width: 10em;
+  height: 4em;
   position: relative;
   display: inline-block;
-  padding: 12px 24px;
+  padding: 1em;
   border: none;
   font-size: 16px;
   background-color: inherit;
@@ -68,6 +70,7 @@ h2 {
   cursor: pointer;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  padding-bottom: 0.5em;
 }
 
 .animated-button span:last-child {
