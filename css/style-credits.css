@@ -2,7 +2,8 @@
 header img {
   width: 20%;
   height: 5%;
-  padding-left: 3em;
+  filter: invert(1);
+  margin: 2em 0em 3em 3em;
 }
 body {
   min-height: 100vh;
@@ -79,10 +80,6 @@ a {
 p {
   max-width: 215px;
 }
-#logoDiv {
-  filter: invert(1);
-}
-
 html,
 body {
   width: 100%;
