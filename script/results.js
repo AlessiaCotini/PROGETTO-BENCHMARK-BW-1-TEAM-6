@@ -40,12 +40,12 @@ const resultsId = document.getElementById("resultsId");
 if (erroriSalvati.length === 0) {
   resultsId.innerHTML = "<p>You Are a PRO! 🏆</p>";
 } else {
-  let html = "<h3>Wrong Answers 😒:</h3><ul>";
+  let html = `<h3>Wrong Answers <i class="fas fa-sad-cry" id="sadEmoji"></i> :</h3><ul>`;
   erroriSalvati.forEach((e) => {
     html += `<li>
                <strong>${e.question}</strong><br>
-               Your Choice: <span style="color:red">${e.yourChoice}</span> 🔴<br>
-               Correct Choice: <span style="color:green">${e.rightChoice}</span> 🟢
+               Your Choice: <span style="color:red">${e.yourChoice}</span> <i class="fas fa-times" id="times"></i><br>
+               Correct Choice: <span style="color:green">${e.rightChoice}</span> <i class="fas fa-check" id="check"></i>
              </li>`;
   });
   html += "</ul>";
@@ -53,7 +53,7 @@ if (erroriSalvati.length === 0) {
 }
 const retryBtn = document.createElement("button");
 retryBtn.classList.add("retryBtn");
-retryBtn.textContent = "RETRY 🤘🏽";
+retryBtn.textContent = "RETRY";
 retryBtn.style.marginTop = "20px";
 retryBtn.style.padding = "10px 20px";
 retryBtn.style.fontSize = "16px";

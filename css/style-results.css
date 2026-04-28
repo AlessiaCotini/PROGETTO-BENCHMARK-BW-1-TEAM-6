@@ -48,13 +48,17 @@ div {
   width: 25% !important;
   height: 25% !important;
 }
+
 h2 {
   font-size: 30px;
 }
-.animated-button, .retryBtn{
+.animated-button,
+.retryBtn {
+  width: 10em;
+  height: 4em;
   position: relative;
   display: inline-block;
-  padding: 12px 24px;
+  padding: 0.5em;
   border: none;
   font-size: 16px;
   background-color: inherit;
@@ -65,6 +69,7 @@ h2 {
   cursor: pointer;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  margin-bottom: 2em;
 }
 
 .animated-button span:last-child {
@@ -80,21 +85,30 @@ h2 {
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.animated-button span:first-child {
+.animated-button span:first-child{
   position: relative;
   z-index: 1;
 }
 
-.animated-button:hover {
+.retryBtn:hover {
+  box-shadow: 0 0 0 5px #f4029bbe;
+  color: #ffffff;
+  background-color:#f4029bbe;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);  }
+
+  .animated-button:hover {
   box-shadow: 0 0 0 5px #2195f360;
   color: #ffffff;
+}
+.retryBtn:active {
+  scale: 0.95;
 }
 
 .animated-button:active {
   scale: 0.95;
 }
 
-.animated-button:hover span:last-child {
+.animated-button:hover span:last-child{
   width: 150px;
   height: 150px;
   opacity: 1;
@@ -102,4 +116,16 @@ h2 {
 form {
   text-align: center;
   padding-top: 50px;
+}
+#sadEmoji {
+  color: #ff34e4;
+}
+li {
+  list-style-type: none;
+}
+#times {
+  color: rgb(255, 70, 70);
+}
+#check {
+  color: rgb(8, 250, 8);
 }

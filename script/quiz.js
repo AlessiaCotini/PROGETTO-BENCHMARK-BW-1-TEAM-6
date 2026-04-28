@@ -42,17 +42,6 @@ const updateCounter = () => {
       </div>`;
 };
 
-let easyValue = false;
-let hardValue = false;
-const easyButton = () => {
-  easyValue = true;
-  difficultyArray();
-};
-const hardButton = () => {
-  hardValue = true;
-  difficultyArray();
-};
-
 const quizArrayEasy = [
   {
     name: "billiejean",
@@ -200,6 +189,7 @@ const quizArrayHard = [
 ];
 
 let quizArray = [];
+
 startButton.addEventListener("click", () => {
   if (quizArray.length === 0) {
     alert("Seleziona almeno una difficoltà!");
@@ -210,15 +200,16 @@ startButton.addEventListener("click", () => {
 const updateDifficulty = () => {
   const isEasy = document.getElementById("easyMode").checked;
   const isHard = document.getElementById("hardMode").checked;
+  const isAll = document.getElementById("mixedMode").checked;
 
-  if (isEasy && isHard) {
+  if (isAll) {
     quizArray = [...quizArrayEasy, ...quizArrayHard];
   } else if (isEasy) {
     quizArray = [...quizArrayEasy];
   } else if (isHard) {
     quizArray = [...quizArrayHard];
   } else {
-    quizArray = []; //
+    quizArray = [];
   }
   shuffle(quizArray);
   startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
@@ -230,6 +221,9 @@ document
   .addEventListener("change", updateDifficulty);
 document
   .getElementById("hardMode")
+  .addEventListener("change", updateDifficulty);
+document
+  .getElementById("mixedMode")
   .addEventListener("change", updateDifficulty);
 
 startButton.style.opacity = quizArray.length > 0 ? 1 : 0.5;
@@ -274,7 +268,8 @@ startButton.addEventListener("click", () => {
   updateCircle(timer);
 
   interval = setInterval(() => {
-    displayTimer.textContent = timer;
+    let timerSet = timer >= 0 ? timer : 0;
+    displayTimer.textContent = timerSet;
     updateCircle(timer);
 
     if (timer <= 10) {
@@ -285,8 +280,31 @@ startButton.addEventListener("click", () => {
 
     timer--;
 
-    if (timer < 0) {
+    if (timer === -1) {
+      [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+        if (btn.textContent === quizArray[i].accepted) {
+          btn.style.borderColor = "lime";
+        } else {
+          btn.style.borderColor = "red";
+        }
+        btn.style.opacity = 0.7;
+        btn.disabled = true;
+      });
+    }
+
+    if (timer < -1) {
       timer = 30;
+      console.log("Time is up!");
+      resultsOfQuiz.push({
+        question: quizArray[i].question,
+        yourChoice: "You didn't answer in time",
+        rightChoice: quizArray[i].accepted,
+      });
+      [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+        btn.style.borderColor = "";
+        btn.style.opacity = 1;
+        btn.disabled = false;
+      });
       updateCircle(timer);
       i++;
 
@@ -378,7 +396,10 @@ function checkAnswer(selectedAnswer, buttonClicked) {
   if (selectedAnswer === correctAnswer) {
     score++;
     console.log("Good!", score);
-    buttonClicked.style.borderColor = "green";
+    buttonClicked.style.borderColor = "lime";
+    [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+      if (btn.textContent !== selectedAnswer) btn.style.opacity = 0.7;
+    });
   } else {
     console.log("Wrong!");
     buttonClicked.style.borderColor = "red";
@@ -388,13 +409,17 @@ function checkAnswer(selectedAnswer, buttonClicked) {
       rightChoice: correctAnswer,
     });
     [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
-      if (btn.textContent === correctAnswer) btn.style.borderColor = "green";
+      if (btn.textContent === correctAnswer) btn.style.borderColor = "lime";
+    });
+    [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
+      if (btn.textContent !== selectedAnswer) btn.style.opacity = 0.7;
     });
   }
   setTimeout(() => {
     [buttonQuiz1, buttonQuiz2, buttonQuiz3].forEach((btn) => {
       btn.style.borderColor = "";
       btn.disabled = false;
+      btn.style.opacity = 1;
     });
 
     i++;
@@ -436,6 +461,6 @@ function endGame() {
 document.addEventListener("visibilitychange", function () {
   if (document.hidden && i < quizArray.length) {
     sessionStorage.setItem("quiz_annullato", "true");
-    window.location.replace("welcome.html");
+    window.location.replace("index.html");
   }
 });

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz.com</title>
+    <title>Quiz Time!</title>
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/style-quiz.css" />
@@ -18,7 +18,7 @@
   </head>
   <body>
     <header>
-      <a href="welcome.html">
+      <a href="index.html">
         <img src="./assets/epicode_logo.png" alt="logoepic"
       /></a>
       <section id="timerContainer" class="timer-wrapper">
@@ -51,11 +51,18 @@
     <main>
       <h1 id="readyTitle">Ready, Set...</h1>
       <form id="difficultMode">
-        <input type="checkbox" id="easyMode" />
-        <label for="easyMode" class="difficulty-label">Easy Mode</label>
-
-        <input type="checkbox" id="hardMode" />
-        <label for="hardMode" class="difficulty-label">Hard Mode</label>
+        <div>
+          <label for="easyMode">Easy Mode</label>
+          <input type="radio" name="difficulty" id="easyMode" />
+        </div>
+        <div>
+          <label for="hardMode"> Hard Mode</label>
+          <input type="radio" name="difficulty" id="hardMode" />
+        </div>
+        <div>
+          <label for="mixedMode">Mixed Mode</label>
+          <input type="radio" name="difficulty" id="mixedMode" />
+        </div>
       </form>
       <section id="questionContainer">
         <audio src="" id="songsId"></audio>
